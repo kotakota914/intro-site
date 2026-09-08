@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K.N. — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== デザイントークン(DESIGN.md の Quick Start をそのまま採用) ===== */
+  :root {
+    --color-primary-ink: #1d1d1f;
+    --color-mid-gray: #707070;
+    --color-deep-gray: #474747;
+    --color-hairline: #d6d6d6;
+    --color-canvas: #f5f5f7;
+    --color-paper: #ffffff;
+    --color-cool-wash: #e8e8ed;
+    --color-faded-surface: #fafafc;
+    --color-quiet-dot: #777779;
+    --color-electric-blue: #0071e3;
+    --color-link-blue: #0066cc;
+    --color-ember: #b64400;
+    --color-sky: #c8d8e0;
+    --color-citrus: #dddc8c;
+    --color-starlight: #f0e4d3;
+    --color-silver: #e3e4e5;
+    --color-blush: #e8d0d0;
+    --color-indigo: #596680;
+    --color-midnight: #2e3642;
+
+    --font-display: "Inter", "Noto Sans JP", "SF Pro Display", "Hiragino Sans", "Yu Gothic UI", system-ui, sans-serif;
+    --font-text: "Inter", "Noto Sans JP", "SF Pro Text", "Hiragino Sans", "Yu Gothic UI", system-ui, sans-serif;
+
+    --radius-cards: 28px;
+    --radius-buttons: 980px;
+    --page-max-width: 1200px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-primary-ink);
+    font-family: var(--font-text);
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.022em;
+    font-feature-settings: "tnum" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--color-link-blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: var(--page-max-width); margin: 0 auto; padding: 0 40px; }
+
+  /* ===== グローバルナビ(44px・スクロールで曇りガラス) ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    height: 44px;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    transition: background .3s;
+  }
+  .nav.scrolled { background: rgba(250,250,252,0.9); }
+  .nav .container {
+    height: 100%; display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav .brand { font-size: 14px; font-weight: 600; color: var(--color-primary-ink); letter-spacing: -0.01em; }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+  .nav ul a { font-size: 12px; color: var(--color-primary-ink); letter-spacing: -0.01em; opacity: .85; }
+  .nav ul a:hover { opacity: 1; text-decoration: none; }
+
+  /* ===== ヒーロー ===== */
+  .hero { text-align: center; padding: 120px 0 100px; }
+  .eyebrow { font-size: 17px; color: var(--color-primary-ink); margin: 0 0 12px; font-weight: 400; }
+  .badge-new { display: block; color: var(--color-ember); font-size: 14px; font-weight: 500; margin-bottom: 8px; letter-spacing: 0; }
+  .display {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 9vw, 96px);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -1.44px;
+    margin: 0 0 32px;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--color-electric-blue);
+    color: #fff;
+    border-radius: var(--radius-buttons);
+    padding: 11px 16px;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+  }
+  .btn:hover { text-decoration: none; filter: brightness(1.08); }
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid var(--color-primary-ink);
+    color: var(--color-primary-ink);
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 17px;
+    margin-left: 12px;
+  }
+  .btn-ghost:hover { background: var(--color-cool-wash); text-decoration: none; }
+  .hero .price { color: var(--color-mid-gray); font-size: 17px; margin-top: 20px; }
+  .hero-visual {
+    margin: 64px auto 0;
+    max-width: 980px;
+    height: 360px;
+    border-radius: var(--radius-cards);
+    background: linear-gradient(184deg, #1d1d1f 20%, #0000f9 76%, #252525 95%);
+    display: flex; align-items: flex-end; justify-content: flex-start;
+    padding: 40px;
+    color: #fff;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-visual .code {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 14px; line-height: 1.6; opacity: .9; white-space: pre; margin: 0;
+  }
+  .hero-visual .glow {
+    position: absolute; right: -80px; top: -80px; width: 360px; height: 360px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(221,220,140,.55), transparent 65%);
+  }
+
+  /* ===== バンド(白 ↔ #f5f5f7 を交互に) ===== */
+  .band { padding: 110px 0; }
+  .band.gray { background: var(--color-canvas); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 32px; font-weight: 600; letter-spacing: 0.007em; line-height: 1.14;
+    margin: 0 0 12px;
+  }
+  .section-lead { font-size: 21px; letter-spacing: 0.011em; color: var(--color-mid-gray); margin: 0 0 48px; max-width: 720px; line-height: 1.38; }
+
+  /* カード(28px・影なし・枠なし) */
+  .card {
+    background: var(--color-paper);
+    border-radius: var(--radius-cards);
+    padding: 40px;
+  }
+  .band.white .card { background: var(--color-canvas); }
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 28px; font-weight: 600; letter-spacing: 0.007em; line-height: 1.14;
+    margin: 0 0 12px;
+  }
+  .card h3.big { font-size: 40px; line-height: 1.1; margin-bottom: 16px; }
+  .card p { color: var(--color-mid-gray); margin: 0 0 10px; }
+  .card .arrow { color: var(--color-link-blue); display: inline-block; margin-top: 8px; }
+  .card .arrow::after { content: " ›"; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+
+  /* 数値タイル */
+  .stat { font-family: var(--font-display); font-size: 56px; font-weight: 700; letter-spacing: -0.28px; line-height: 1.07; }
+  .stat-label { font-size: 14px; color: var(--color-mid-gray); letter-spacing: -0.224px; margin-top: 6px; }
+
+  /* 色見本カード(製品カラーの代わりに「興味の色」) */
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .swatch {
+    aspect-ratio: 1 / 1; border-radius: var(--radius-cards);
+    display: flex; align-items: flex-end; padding: 20px;
+    font-size: 14px; font-weight: 600; color: var(--color-primary-ink); letter-spacing: -0.01em;
+  }
+  .swatch.dark { color: #fff; }
+
+  /* スキルのチップ */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .chip {
+    background: var(--color-cool-wash); color: var(--color-primary-ink);
+    border-radius: 999px; padding: 6px 14px; font-size: 14px; letter-spacing: -0.224px;
+  }
+
+  /* コンペ実績リスト(罫線なし・背景色で区切る) */
+  .comp { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 28px 40px; border-radius: var(--radius-cards); background: var(--color-canvas); margin-bottom: 12px; }
+  .comp .name { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: 0.007em; margin: 0 0 4px; }
+  .comp .desc { color: var(--color-mid-gray); font-size: 17px; margin: 0; }
+  .comp .score { text-align: right; font-family: var(--font-display); font-size: 28px; font-weight: 600; white-space: nowrap; }
+  .comp .score span { display: block; font-size: 12px; color: var(--color-mid-gray); font-weight: 400; letter-spacing: -0.12px; }
+
+  /* ゴール(巨大見出し) */
+  .goal { text-align: center; }
+  .goal .display { margin-bottom: 20px; }
+  .goal p { max-width: 640px; margin: 0 auto 32px; color: var(--color-mid-gray); font-size: 21px; line-height: 1.38; letter-spacing: 0.011em; text-align: left; }
+  .dots { display: flex; justify-content: center; gap: 7px; margin-top: 40px; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--color-quiet-dot); }
+  .dots i.on { background: var(--color-primary-ink); }
+
+  /* フッター */
+  footer { background: var(--color-canvas); padding: 40px 0 48px; font-size: 12px; color: var(--color-mid-gray); line-height: 1.33; letter-spacing: -0.12px; }
+  footer .links { display: flex; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+  footer .links a { color: var(--color-deep-gray); border-bottom: 1px solid var(--color-deep-gray); font-size: 12px; }
+  footer .links a:hover { text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .split { grid-template-columns: 1fr; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 0 24px; }
+    .band { padding: 80px 0; }
+    .hero { padding: 80px 0 64px; }
+    .hero-visual { height: 280px; padding: 24px; }
+    .nav ul { gap: 16px; }
+    .nav ul li:nth-child(n+4) { display: none; }
+    .comp { grid-template-columns: 1fr; }
+    .comp .score { text-align: left; }
+    .btn-ghost { margin-left: 0; margin-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ナビ ===== -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <span class="brand">K.N.</span>
+    <ul>
+      <li><a href="#about">自己紹介</a></li>
+      <li><a href="#skills">スキル</a></li>
+      <li><a href="#projects">つくったもの</a></li>
+      <li><a href="#competitions">コンペ実績</a></li>
+      <li><a href="#goal">目標</a></li>
+      <li><a href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== ヒーロー ===== -->
+<header class="hero">
+  <div class="container">
+    <span class="badge-new">金沢工業大学 1年</span>
+    <p class="eyebrow">K.N.</p>
+    <h1 class="display">データで、<br>勝ちにいく。</h1>
+    <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub を見る</a>
+    <a class="btn-ghost" href="#projects">つくったものを見る</a>
+    <p class="price">Python と機械学習で、コンペとツールづくりに取り組んでいます。</p>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="glow"></div>
+<pre class="code">import lightgbm as lgb
+
+for seed in range(5):
+    model = lgb.LGBMClassifier(random_state=seed)
+    model.fit(X_train, y_train)
+    oof[valid_idx] += model.predict_proba(X_valid)[:, 1] / 5
+
+print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 自己紹介(グレー帯) ===== -->
+<section class="band gray" id="about">
+  <div class="container">
+    <h2 class="section-title">自己紹介。</h2>
+    <p class="section-lead">プログラミングを始めて 1 年目。授業と部活の合間に、データ分析コンペと「自分の困りごとを解決する小さなツール」を作っています。</p>
+
+    <div class="split">
+      <div class="card">
+        <h3 class="big">課題を、コードで小さくする。</h3>
+        <p>大学の毎週の提出物を半自動化するツール、野球部の連絡をまとめる LINE Bot、農場シミュレーションで戦う AI エージェント。動機はいつも「面倒だから」「もっと勝ちたいから」です。</p>
+        <p>第一言語は Python。ローカルに GPU がないので、学習は Google Colab や Kaggle Notebook で回しています。</p>
+        <a class="arrow" href="#projects">つくったものを見る</a>
+      </div>
+      <div class="swatches" aria-label="興味のある分野">
+        <div class="swatch" style="background: var(--color-citrus)">機械学習</div>
+        <div class="swatch" style="background: var(--color-sky)">データ分析</div>
+        <div class="swatch" style="background: var(--color-starlight)">自動化ツール</div>
+        <div class="swatch" style="background: var(--color-blush)">野球</div>
+        <div class="swatch dark" style="background: var(--color-indigo)">Python</div>
+        <div class="swatch" style="background: var(--color-silver)">Web</div>
+        <div class="swatch dark" style="background: var(--color-midnight)">Kaggle</div>
+        <div class="swatch" style="background: var(--color-cool-wash)">LINE Bot</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== スキル(白帯) ===== -->
+<section class="band white" id="skills">
+  <div class="container">
+    <h2 class="section-title">できること。</h2>
+    <p class="section-lead">得意なのはテーブルデータの機械学習。必要に応じて Web やスクリプトも書きます。</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>機械学習</h3>
+        <p>勾配ブースティングを軸に、交差検証を固定して「1 実験 = 1 変更」で改善を積み上げるスタイル。</p>
+        <div class="chips">
+          <span class="chip">LightGBM</span><span class="chip">CatBoost</span><span class="chip">XGBoost</span>
+          <span class="chip">DeBERTa</span><span class="chip">スタッキング</span><span class="chip">RAG</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Python</h3>
+        <p>データ処理から PDF・Excel 生成、シミュレーション評価まで。パッケージ管理は uv。</p>
+        <div class="chips">
+          <span class="chip">pandas</span><span class="chip">scikit-learn</span><span class="chip">reportlab</span>
+          <span class="chip">openpyxl</span><span class="chip">Pillow</span><span class="chip">uv</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Web・ツール</h3>
+        <p>単一ファイルの HTML ツールや、Node.js の Webhook サーバーも作ります。</p>
+        <div class="chips">
+          <span class="chip">HTML / CSS / JS</span><span class="chip">Node.js</span><span class="chip">LINE Messaging API</span>
+          <span class="chip">Git / GitHub</span><span class="chip">Google Colab</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== つくったもの(グレー帯) ===== -->
+<section class="band gray" id="projects">
+  <div class="container">
+    <h2 class="section-title">つくったもの。</h2>
+    <p class="section-lead">どれも「自分か、身近な誰かが実際に使う」ことを前提に作っています。</p>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="split">
+        <div>
+          <span class="badge-new">New</span>
+          <h3 class="big">Kaggriculture 農場エージェント</h3>
+          <p>Kaggle の農場シミュレーション対戦コンペ向け AI エージェント。メロンで序盤に資金を稼ぎ、家畜と作物に分散投資する経済戦略を、標準ライブラリだけの単一ファイルで実装。ローカル対戦シミュレータとパラメータ探索ツールも自作しました。</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">kaggle-environments</span><span class="chip">シミュレーション</span></div>
+        </div>
+        <div class="grid-2">
+          <div><div class="stat">89.5k</div><div class="stat-label">対 starter 平均スコア(10 seed)</div></div>
+          <div><div class="stat">v9</div><div class="stat-label">改善を重ねたバージョン数</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>野球部 LINE 公式アカウント Bot</h3>
+        <p>大会ごとに乱立していたグループ LINE を 1 つの公式アカウントに集約。リッチメニュー 4 タブから大会メンバー・試合日程・練習日程・連絡を登録/閲覧でき、編集は管理者のみ。毎朝 7 時の予定通知にも対応。</p>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">LINE Messaging API</span><span class="chip">Pillow</span></div>
+      </div>
+      <div class="card">
+        <h3>週次課題オートメーション</h3>
+        <p>毎週提出する「行動履歴」と「生活習慣自己管理表」を半自動化。ブラウザの入力フォームから JSON を書き出し、Python で提出用 PDF(A4 横)と Excel を自動生成します。</p>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">reportlab</span><span class="chip">openpyxl</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== コンペ実績(白帯) ===== -->
+<section class="band white" id="competitions">
+  <div class="container">
+    <h2 class="section-title">コンペ実績。</h2>
+    <p class="section-lead">2026 年時点で参加したデータ分析コンペ。すべての実験を記録して、再現できる形で残しています。</p>
+
+    <div class="comp">
+      <div>
+        <h3 class="name">SIGNATE Student Cup 2026</h3>
+        <p class="desc">テーブル + 日本語テキストの分類。LightGBM / CatBoost / XGBoost を 5 seed ずつ学習してアンサンブル。</p>
+      </div>
+      <div class="score">0.734<span>CV F1(LB 0.706)</span></div>
+    </div>
+    <div class="comp">
+      <div>
+        <h3 class="name">BitGrit 危険発話検出</h3>
+        <p class="desc">DeBERTa など 7 種のモデル × 4 seed × 5 fold に、言語モデルの困惑度を特徴量として加えてスタッキング。</p>
+      </div>
+      <div class="score">7×4×5<span>モデル × seed × fold</span></div>
+    </div>
+    <div class="comp">
+      <div>
+        <h3 class="name">SIGNATE NTT RAG コンペ</h3>
+        <p class="desc">文書の書式情報を残した抽出と BM25 検索を組み合わせ、Gemini で回答を生成する RAG(検索拡張生成)パイプライン。</p>
+      </div>
+      <div class="score">RAG<span>検索 + 生成</span></div>
+    </div>
+    <div class="comp">
+      <div>
+        <h3 class="name">Kaggle Kaggriculture</h3>
+        <p class="desc">農場シミュレーションの対戦コンペ。初のメダル挑戦として 2026 年 9 月に提出。</p>
+      </div>
+      <div class="score">2026.09<span>挑戦中</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 目標(グレー帯) ===== -->
+<section class="band gray goal" id="goal">
+  <div class="container">
+    <h2 class="display">Kaggle<br>Grandmaster.</h2>
+    <p>2026 年 9 月、ハッカソンを終えたのを機に宣言しました。まずはメダル対象コンペで 1 枚。実験を記録し、CV を信じ、1 回に 1 つだけ変える。その積み重ねで上を目指します。</p>
+    <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">進捗を GitHub で見る</a>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="container">
+    <div class="links">
+      <a href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a>
+      <a href="#about">自己紹介</a>
+      <a href="#projects">つくったもの</a>
+      <a href="#competitions">コンペ実績</a>
+    </div>
+    <p>© 2026 K.N. 金沢工業大学 1年。このサイトは単一の HTML ファイルで作られています。</p>
+  </div>
+</footer>
+
+<script>
+  // スクロールしたらナビの背景を少し濃くする(DESIGN.md の Global Navigation Bar の挙動)
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+</body>
+</html>

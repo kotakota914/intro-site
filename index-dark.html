@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K.N. — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Noto+Sans+JP:wght@200;400;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== デザイントークン(DESIGN (2).md の Quick Start) ===== */
+  :root {
+    --color-void: #000000;
+    --color-bone-white: #ffffff;
+    --color-ash-gray: #9a9a9a;
+    --color-silver-mist: #bdbdbd;
+    --color-electric-iris: #8052ff;
+    --color-saffron-spark: #ffb829;
+    --color-deep-verdant: #15846e;
+
+    --font: "Inter", "Noto Sans JP", "PPNeueMontreal", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+
+    --radius: 24px;
+    --page-max-width: 1280px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--color-void);
+    color: var(--color-bone-white);
+    font-family: var(--font);
+    font-size: 18px;
+    font-weight: 200;            /* 本文は超細字(200)が signature */
+    line-height: 1.5;
+    font-feature-settings: "ss01" on;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--color-saffron-spark); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: var(--page-max-width); margin: 0 auto; padding: 0 48px; position: relative; z-index: 1; }
+
+  /* 背景に散らばる三角パーティクル(ページ全体・低い不透明度) */
+  #ambient { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: .55; }
+
+  /* ===== ナビ(透明・枠なし) ===== */
+  .nav { position: relative; z-index: 2; }
+  .nav .container { height: 84px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; font-weight: 400; }
+  .logo svg { width: 18px; height: 18px; }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; align-items: center; }
+  .nav ul a {
+    font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.025em;
+    color: var(--color-ash-gray);
+  }
+  .nav ul a:hover { color: #fff; text-decoration: none; }
+
+  /* 唯一の塗りボタン(紫のピル) */
+  .btn {
+    display: inline-block;
+    background: var(--color-electric-iris);
+    color: #fff;
+    border-radius: 22.5px;
+    padding: 14.4px 16px;
+    font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.025em;
+    line-height: 1;
+  }
+  .btn:hover { text-decoration: none; filter: brightness(1.1); }
+  .ghost { color: var(--color-ash-gray); font-size: 14px; font-weight: 400; }
+  .ghost:hover { color: #fff; }
+
+  /* ===== 共通タイポ ===== */
+  .label {
+    display: block;
+    font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35px;
+    color: var(--color-saffron-spark);
+    margin-bottom: 18px;
+  }
+  .label.violet { color: var(--color-electric-iris); font-size: 12px; font-weight: 400; }
+  .display {
+    font-size: clamp(52px, 7vw, 100px);
+    font-weight: 400;            /* 見出しは太字にしない。大きさと字間で階層を作る */
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin: 0 0 30px;
+  }
+  .h-lg { font-size: clamp(48px, 6vw, 78px); font-weight: 400; line-height: 1.1; letter-spacing: -0.04em; margin: 0 0 24px; }
+  .h-sm { font-size: 42px; font-weight: 400; line-height: 1.2; letter-spacing: -1.68px; margin: 0 0 18px; }
+  .h-xs { font-size: 27px; font-weight: 400; line-height: 1; margin: 0 0 12px; }
+  p { margin: 0 0 18px; max-width: 520px; }
+  p.silver { color: var(--color-silver-mist); }
+  .caption { font-size: 12px; line-height: 1.5; color: var(--color-ash-gray); font-weight: 400; }
+
+  /* ===== セクション(全部 #000、余白だけで区切る) ===== */
+  section { padding: 120px 0; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .two.rev > :first-child { order: 2; }
+  .two.top { align-items: start; }
+
+  /* ===== ヒーロー ===== */
+  .hero { padding: 60px 0 120px; }
+  .hero .two { grid-template-columns: 1.05fr 1fr; }
+  #brain { width: 100%; height: auto; aspect-ratio: 1 / 1; display: block; }
+
+  /* 興味の一覧(巨大な細字で並べるだけ・枠なし) */
+  .words { list-style: none; margin: 0; padding: 0; }
+  .words li {
+    font-size: clamp(36px, 4.5vw, 60px); font-weight: 400; letter-spacing: -0.04em; line-height: 1.15;
+    color: var(--color-ash-gray);
+    transition: color .3s;
+  }
+  .words li:hover { color: #fff; }
+  .words li em { font-style: normal; color: var(--color-saffron-spark); }
+
+  /* 数値(枠なし) */
+  .stats { display: flex; gap: 60px; margin-top: 30px; }
+  .stat { font-size: 78px; font-weight: 400; letter-spacing: -3.12px; line-height: 1; }
+  .stat small { display: block; font-size: 12px; letter-spacing: 0; color: var(--color-ash-gray); margin-top: 12px; font-weight: 400; }
+
+  /* プロジェクト行(縦に積む) */
+  .project { padding: 60px 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+  .tag { font-size: 12px; font-weight: 400; color: var(--color-silver-mist); border: 1px solid rgba(255,255,255,.18); border-radius: 9999px; padding: 5px 12px; }
+
+  /* コンペ実績リスト(罫線なし) */
+  .comps { list-style: none; margin: 0; padding: 0; }
+  .comps li { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: baseline; padding: 30px 0; }
+  .comps .name { font-size: 27px; font-weight: 400; margin: 0 0 6px; }
+  .comps .desc { color: var(--color-silver-mist); margin: 0; }
+  .comps .score { font-size: 42px; font-weight: 400; letter-spacing: -1.68px; color: var(--color-saffron-spark); white-space: nowrap; }
+  .comps .score small { display: block; font-size: 12px; letter-spacing: 0; color: var(--color-ash-gray); text-align: right; }
+
+  /* ゴール */
+  .goal { text-align: left; }
+  .dots { display: flex; gap: 8px; margin-top: 30px; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(128,82,255,.25); }
+  .dots i.on { background: var(--color-electric-iris); }
+
+  footer { padding: 60px 0 48px; color: var(--color-ash-gray); font-size: 12px; font-weight: 400; }
+  footer .row { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer a { color: var(--color-ash-gray); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.025em; margin-right: 24px; }
+  footer a:hover { color: #fff; text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    section { padding: 80px 0; }
+    .two, .hero .two { grid-template-columns: 1fr; gap: 36px; }
+    .two.rev > :first-child { order: 0; }
+    .nav ul li:not(:last-child) { display: none; }
+    .stats { gap: 36px; }
+    .stat { font-size: 56px; letter-spacing: -2px; }
+    .comps li { grid-template-columns: 1fr; gap: 6px; }
+    .comps .score small { text-align: left; }
+    #brain { max-width: 420px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="ambient" aria-hidden="true"></canvas>
+
+<!-- ===== ナビ ===== -->
+<nav class="nav">
+  <div class="container">
+    <a class="logo" href="#top" aria-label="トップへ">
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/>
+        </linearGradient></defs>
+        <polygon points="2,18 10,2 18,18" fill="url(#lg)"/>
+      </svg>
+      K.N.
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#competitions">Competitions</a></li>
+      <li><a href="#goal">Goal</a></li>
+      <li><a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== ヒーロー:左に見出し、右に脳型の星座 ===== -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="two">
+      <div>
+        <span class="label">Kanazawa Institute of Technology · 1st year</span>
+        <h1 class="display">データで、<br>勝ちにいく。</h1>
+        <p>金沢工業大学の 1 年生、K.N. です。Python と機械学習を軸に、データ分析コンペと「自分の困りごとを解決する小さなツール」を作っています。</p>
+        <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub を見る</a>
+        <a class="ghost" href="#projects" style="margin-left: 24px;">つくったもの ↓</a>
+      </div>
+      <div>
+        <canvas id="brain" width="720" height="720" aria-label="三角形のパーティクルで描いた脳の形"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 自己紹介:左に興味の語、右に本文(ジグザグ 1) ===== -->
+<section id="about">
+  <div class="container">
+    <div class="two top">
+      <ul class="words" aria-label="興味のある分野">
+        <li>機械学習</li>
+        <li>データ分析</li>
+        <li><em>Kaggle</em></li>
+        <li>自動化ツール</li>
+        <li>LINE Bot</li>
+        <li>野球</li>
+      </ul>
+      <div>
+        <span class="label">About</span>
+        <h2 class="h-sm">課題を、コードで小さくする。</h2>
+        <p class="silver">プログラミングを始めて 1 年目。大学の毎週の提出物を半自動化するツール、野球部の連絡をまとめる LINE Bot、農場シミュレーションで戦う AI エージェント。動機はいつも「面倒だから」「もっと勝ちたいから」です。</p>
+        <p class="silver">第一言語は Python。ローカルに GPU がないので、学習は Google Colab や Kaggle Notebook で回します。実験は「1 回に 1 つだけ変える」「交差検証を固定する」「すべて記録に残す」を守っています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== つくったもの:見出し+本文を左右交互に(ジグザグ 2〜4) ===== -->
+<section id="projects" style="padding-top: 60px;">
+  <div class="container">
+    <span class="label">Projects</span>
+    <h2 class="h-lg">つくったもの。</h2>
+
+    <div class="project">
+      <div class="two rev">
+        <div>
+          <span class="label violet">Project 01 · Kaggle</span>
+          <h3 class="h-sm">Kaggriculture 農場エージェント</h3>
+          <p class="silver">農場シミュレーション対戦コンペ向けの AI エージェント。メロンで序盤に資金を稼ぎ、家畜と作物に分散投資する経済戦略を、標準ライブラリだけの単一ファイルで実装。ローカル対戦シミュレータとパラメータ探索ツールも自作しました。</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">kaggle-environments</span><span class="tag">シミュレーション</span></div>
+        </div>
+        <div class="stats">
+          <div class="stat">89.5k<small>対 starter 平均スコア(10 seed)</small></div>
+          <div class="stat">v9<small>改善を重ねたバージョン</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="two">
+        <div>
+          <span class="label violet">Project 02 · Node.js</span>
+          <h3 class="h-sm">野球部 LINE 公式アカウント Bot</h3>
+          <p class="silver">大会ごとに乱立していたグループ LINE を 1 つの公式アカウントに集約。リッチメニュー 4 タブから大会メンバー・試合日程・練習日程・連絡を登録/閲覧でき、編集は管理者のみ。毎朝 7 時の予定通知にも対応。</p>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">LINE Messaging API</span><span class="tag">Pillow</span></div>
+        </div>
+        <div class="stats">
+          <div class="stat">4<small>タブのリッチメニュー</small></div>
+          <div class="stat">7:00<small>毎朝の自動通知</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="two rev">
+        <div>
+          <span class="label violet">Project 03 · Python</span>
+          <h3 class="h-sm">週次課題オートメーション</h3>
+          <p class="silver">毎週提出する「行動履歴」と「生活習慣自己管理表」を半自動化。ブラウザの入力フォームから JSON を書き出し、Python で提出用 PDF(A4 横)と Excel を自動生成します。</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">reportlab</span><span class="tag">openpyxl</span></div>
+        </div>
+        <div class="stats">
+          <div class="stat">2<small>提出物を同時生成(PDF / Excel)</small></div>
+          <div class="stat">1<small>週の入力は HTML フォームだけ</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== コンペ実績:左に見出し、右にリスト ===== -->
+<section id="competitions">
+  <div class="container">
+    <div class="two top">
+      <div>
+        <span class="label">Competitions</span>
+        <h2 class="h-lg">コンペ実績。</h2>
+        <p class="silver">2026 年時点で参加したデータ分析コンペ。すべての実験を記録して、再現できる形で残しています。</p>
+      </div>
+      <ul class="comps">
+        <li>
+          <div><h3 class="name">SIGNATE Student Cup 2026</h3><p class="desc">テーブル + 日本語テキストの分類。LightGBM / CatBoost / XGBoost を 5 seed ずつ学習してアンサンブル。</p></div>
+          <div class="score">0.734<small>CV F1 · LB 0.706</small></div>
+        </li>
+        <li>
+          <div><h3 class="name">BitGrit 危険発話検出</h3><p class="desc">DeBERTa など 7 種 × 4 seed × 5 fold に、言語モデルの困惑度を特徴量として加えてスタッキング。</p></div>
+          <div class="score">7×4×5<small>モデル × seed × fold</small></div>
+        </li>
+        <li>
+          <div><h3 class="name">SIGNATE NTT RAG コンペ</h3><p class="desc">書式情報を残した文書抽出と BM25 検索を組み合わせ、Gemini で回答を生成する RAG(検索拡張生成)。</p></div>
+          <div class="score">RAG<small>検索 + 生成</small></div>
+        </li>
+        <li>
+          <div><h3 class="name">Kaggle Kaggriculture</h3><p class="desc">農場シミュレーションの対戦コンペ。初のメダル挑戦として 2026 年 9 月に提出。</p></div>
+          <div class="score">2026.09<small>挑戦中</small></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 目標 ===== -->
+<section id="goal" class="goal">
+  <div class="container">
+    <span class="label">Goal</span>
+    <h2 class="display">Kaggle<br>Grandmaster.</h2>
+    <p>2026 年 9 月、ハッカソンを終えたのを機に宣言しました。まずはメダル対象コンペで 1 枚。実験を記録し、CV を信じ、1 回に 1 つだけ変える。その積み重ねで上を目指します。</p>
+    <a class="ghost" href="https://github.com/kotakota914" target="_blank" rel="noopener" style="color: var(--color-saffron-spark);">進捗を GitHub で見る ↗</a>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div>
+        <a href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#competitions">Competitions</a>
+      </div>
+      <div>© 2026 K.N. · 金沢工業大学 1年</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- パーティクルの共通設定 ----------
+  // DESIGN (2).md の色: 紫・琥珀・青緑にマゼンタ/青を少し混ぜる
+  const PALETTE = ['#8052ff', '#ffb829', '#15846e', '#c94fd9', '#4f7dff', '#a685ff', '#ffd27a'];
+  const SQ3_2 = 0.866;   // √3/2。正三角形の頂点を出すのに使う
+
+  // 同じ色の三角形をまとめて 1 回の stroke で描く(1 個ずつ描くより何倍も速い)
+  // pts: {x, y, size, angle} の配列。dx, dy は全体の揺れ、alpha は透明度。
+  function strokeTriangles(ctx, pts, color, alpha, dx, dy) {
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = color;
+    ctx.beginPath();
+    for (const p of pts) {
+      const c = Math.cos(p.angle), s = Math.sin(p.angle);
+      const x = p.x + dx, y = p.y + dy, r = p.size;
+      // 回転済みの 3 頂点(上・右下・左下)
+      const ax = x + r * s, ay = y - r * c;                       // (0,-r) を回転
+      const bx = x + (r * SQ3_2) * c - (r * 0.5) * s, by = y + (r * SQ3_2) * s + (r * 0.5) * c;
+      const cx = x + (-r * SQ3_2) * c - (r * 0.5) * s, cy = y + (-r * SQ3_2) * s + (r * 0.5) * c;
+      ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.lineTo(cx, cy); ctx.closePath();
+    }
+    ctx.stroke();
+  }
+
+  function makeParticle(x, y) {
+    return { x, y, size: 2 + Math.random() * 3, angle: Math.random() * Math.PI * 2 };
+  }
+  // 色ごとに配列を分けておく(描画をまとめるため)
+  function groupByColor(n, gen) {
+    const groups = PALETTE.map(color => ({ color, pts: [], phase: Math.random() * Math.PI * 2, drift: 0.5 + Math.random() }));
+    for (let i = 0; i < n; i++) {
+      const p = gen();
+      if (p) groups[Math.floor(Math.random() * groups.length)].pts.push(p);
+    }
+    return groups;
+  }
+
+  // ---------- 1. 脳の形の星座(ヒーロー右側) ----------
+  // 「脳っぽい形」は楕円をいくつか重ねた領域として定義する。座標は 0〜1 に正規化。
+  function inBrain(x, y) {
+    const ell = (cx, cy, rx, ry) => ((x - cx) ** 2) / (rx ** 2) + ((y - cy) ** 2) / (ry ** 2) <= 1;
+    const main = ell(0.50, 0.46, 0.36, 0.28);       // 大脳
+    const top  = ell(0.44, 0.36, 0.28, 0.22);       // 上のふくらみ
+    const back = ell(0.66, 0.50, 0.24, 0.24);       // 後頭部
+    const cere = ell(0.66, 0.70, 0.13, 0.09);       // 小脳
+    const stem = ell(0.52, 0.76, 0.05, 0.10);       // 脳幹
+    const cutFront = ell(0.16, 0.62, 0.12, 0.14);   // 前下をえぐって輪郭を作る
+    return (main || top || back || cere || stem) && !cutFront;
+  }
+
+  const brain = document.getElementById('brain');
+  const bctx = brain.getContext('2d');
+  const BW = brain.width, BH = brain.height;
+  bctx.lineWidth = 1;
+  const brainGroups = groupByColor(2200, () => {
+    // 脳の中に入るまで点を引き直す。中央の割れ目(しわ)は密度を落とす
+    for (let tries = 0; tries < 20; tries++) {
+      const x = Math.random(), y = Math.random();
+      if (!inBrain(x, y)) continue;
+      if (Math.abs(x - 0.5) < 0.012 && y < 0.62 && Math.random() < 0.85) continue;
+      return makeParticle(x * BW, y * BH);
+    }
+    return null;
+  });
+
+  // ---------- 2. 背景全体に散らばるパーティクル ----------
+  const amb = document.getElementById('ambient');
+  const actx = amb.getContext('2d');
+  let ambGroups = [];
+  function resizeAmbient() {
+    amb.width = window.innerWidth;
+    amb.height = window.innerHeight;
+    actx.lineWidth = 1;
+    const n = Math.floor((amb.width * amb.height) / 30000);
+    ambGroups = groupByColor(n, () => makeParticle(Math.random() * amb.width, Math.random() * amb.height));
+  }
+  window.addEventListener('resize', resizeAmbient);
+  resizeAmbient();
+
+  // ---------- 3. 描画ループ(約 30fps、画面外・非表示のときは止める) ----------
+  let brainVisible = true;
+  new IntersectionObserver(es => { brainVisible = es[0].isIntersecting; }).observe(brain);
+
+  let t = 0, last = 0;
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (document.hidden || now - last < 33) return;   // 30fps に間引く
+    last = now;
+    t += 0.033;
+
+    if (brainVisible) {
+      bctx.clearRect(0, 0, BW, BH);
+      for (const g of brainGroups) {
+        const dx = Math.sin(t * g.drift + g.phase) * 1.5;               // ふわっと揺れる
+        const dy = Math.cos(t * g.drift * 0.8 + g.phase) * 1.5;
+        const alpha = 0.5 + 0.4 * Math.sin(t * 1.5 + g.phase);          // 色グループごとにまたたく
+        strokeTriangles(bctx, g.pts, g.color, alpha, dx, dy);
+      }
+    }
+
+    actx.clearRect(0, 0, amb.width, amb.height);
+    for (const g of ambGroups) {
+      for (const p of g.pts) {                                          // ゆっくり上へ流れる
+        p.y -= 0.12; p.angle += 0.004;
+        if (p.y < -10) { p.y = amb.height + 10; p.x = Math.random() * amb.width; }
+      }
+      strokeTriangles(actx, g.pts, g.color, 0.2 + 0.15 * Math.sin(t + g.phase), 0, 0);
+    }
+  }
+  requestAnimationFrame(frame);
+</script>
+</body>
+</html>
