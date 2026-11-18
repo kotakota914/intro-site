@@ -179,6 +179,11 @@
     border-radius: 999px; padding: 6px 14px; font-size: 14px; letter-spacing: -0.224px;
   }
 
+  /* 外部リンク */
+  a.ext { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(0,113,227,.35); }
+  a.ext:hover { color: var(--color-link, #0066cc); border-bottom-color: currentColor; }
+  a.ext::after { content: " \2197"; font-size: .8em; opacity: .6; }
+
   /* ハッカソンのロゴ付きカード */
   .card.hack { display: flex; align-items: center; gap: 20px; padding: 28px; }
   .card.hack img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
@@ -371,25 +376,29 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
     <div class="grid-2" style="margin-bottom: 20px;">
       <div class="card hack">
         <img src="assets/logo-hackit.png" alt="Hackit のロゴ" width="64" height="64">
-        <div><h3>Hackit2026</h3><p>運営と出場の両方を経験(2026.08)</p></div>
+        <div><h3><a class="ext" href="https://hackit-2026.vercel.app/" target="_blank" rel="noopener">Hackit2026</a></h3><p>運営と出場の両方を経験(2026.08)</p></div>
       </div>
       <div class="card hack">
         <img src="assets/logo-tornado.png" alt="Tornado2026 のロゴ" width="64" height="64">
-        <div><h3>Tornado2026</h3><p>PM として企業賞(2026.09)</p></div>
+        <div><h3><a class="ext" href="https://2026.tornado-official.jp/" target="_blank" rel="noopener">Tornado2026</a></h3><p>PM として企業賞(2026.09)</p></div>
       </div>
       <div class="card hack">
         <img src="assets/logo-jphacks.png" alt="JPHACKS のロゴ" width="64" height="64">
-        <div><h3>JPHACKS 2026</h3><p>金沢会場で出場(2026.10)</p></div>
+        <div><h3><a class="ext" href="https://jphacks.com/" target="_blank" rel="noopener">JPHACKS 2026</a></h3><p>金沢会場で出場(2026.10)</p></div>
       </div>
       <div class="card hack">
         <img src="assets/logo-devfest.png" alt="DevFest 2026 のロゴ" width="64" height="64">
-        <div><h3>DevFest GDGoC Japan Hackathon 2026</h3><p>出場中(2026.11)</p></div>
+        <div><h3><a class="ext" href="https://df-hack26.gdgs.jp/" target="_blank" rel="noopener">DevFest GDGoC Japan Hackathon 2026</a></h3><p>出場中(2026.11)</p></div>
       </div>
     </div>
 
     <div class="card hack" style="margin-bottom: 20px;">
       <img src="assets/logo-gnomatic.png" alt="Gnomatic のロゴ" width="64" height="64">
       <div><h3>Gnomatic</h3><p>学部 4 年の先輩たちと、石川県の企業の AI・DX 推進に取り組んでいます。企業との面談で課題を聞き、IT で価値を返す活動です(2026.10〜)。</p></div>
+    </div>
+
+    <div class="card hack" style="margin-bottom: 20px;">
+      <div><h3><a class="ext" href="https://developershub.jp/" target="_blank" rel="noopener">Developers Hub</a>(北陸 IT カンファレンス)</h3><p>学生が主体の一般社団法人。2027 年 9 月開催予定の北陸 IT カンファレンスに向けて、スポンサーチームとして企業との面談を重ね、スポンサーを獲得しました(2026〜)。</p></div>
     </div>
 
     <div class="card" style="margin-bottom: 20px;">
@@ -458,7 +467,7 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
 
     <div class="card hack" style="margin-bottom: 20px; background: var(--color-paper);">
       <img src="assets/logo-datadreamers.png" alt="Data Dreamers のロゴ" width="64" height="64">
-      <div><h3>夢考房 Data Dreamers</h3><p>学内最大のデータサイエンスプロジェクト。毎週月曜に進捗を発表し、先輩から助言をもらいながらコンペに挑戦しています(2026.06〜)。</p></div>
+      <div><h3><a class="ext" href="https://www.kanazawa-it.ac.jp/kitnews/2023/1220_datadreamers.html" target="_blank" rel="noopener">夢考房 Data Dreamers</a></h3><p>学内最大のデータサイエンスプロジェクト。毎週月曜に進捗を発表し、先輩から助言をもらいながらコンペに挑戦しています(2026.06〜)。</p></div>
     </div>
 
     <div class="comp">
@@ -500,8 +509,8 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
 
     <div class="grid-3">
       <div class="card">
-        <h3>東京大学 松尾・岩澤研究室の講座</h3>
-        <p>大規模言語モデル(LLM)、フィジカル AI、GCI ベーシックを受講。</p>
+        <h3><a class="ext" href="https://weblab.t.u-tokyo.ac.jp/" target="_blank" rel="noopener">東京大学 松尾・岩澤研究室</a>の講座</h3>
+        <p><a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/large-language-model/" target="_blank" rel="noopener">大規模言語モデル(LLM)</a>、<a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/physical-ai/" target="_blank" rel="noopener">フィジカル AI</a>、<a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/deep-learning/" target="_blank" rel="noopener">深層学習(Deep Learning)</a>、<a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/gci-basic/" target="_blank" rel="noopener">GCI ベーシック</a>の 4 講座を受講。</p>
         <div class="badges">
           <img src="assets/badge-llm.png" alt="松尾・岩澤研究室 大規模言語モデル講座のバッジ" width="88" height="88">
           <img src="assets/badge-pai.png" alt="松尾・岩澤研究室 フィジカル AI 講座のバッジ" width="88" height="88">
@@ -510,10 +519,10 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
       </div>
       <div class="card">
         <h3>夏期集中・先取り科目</h3>
-        <p>AI プログラミング入門、AI 応用Ⅱ(自然言語処理)、情報ネットワーク基礎。後学期は 2 年生の科目を先取りして履修中。</p>
+        <p>AI プログラミング入門、AI 応用Ⅱ(自然言語処理)、情報ネットワーク基礎、ビジネス思考法入門。後学期は 2 年生の科目を先取りして履修中。</p>
       </div>
       <div class="card">
-        <h3>LAIME Kaggle Dojo</h3>
+        <h3><a class="ext" href="https://laime.optal.info/laime-kaggle-dojo3/" target="_blank" rel="noopener">LAIME Kaggle Dojo</a></h3>
         <p>学生団体 LAIME の Kaggle Dojo に第 3 期生として参加(2026 年 11 月〜)。</p>
         <div class="badges"><img src="assets/logo-laime.png" alt="LAIME Kaggle Dojo のロゴ" width="88" height="88"></div>
       </div>
