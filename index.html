@@ -179,8 +179,19 @@
     border-radius: 999px; padding: 6px 14px; font-size: 14px; letter-spacing: -0.224px;
   }
 
+  /* ハッカソンのロゴ付きカード */
+  .card.hack { display: flex; align-items: center; gap: 20px; padding: 28px; }
+  .card.hack img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+  .card.hack h3 { font-size: 21px; margin: 0 0 4px; }
+  .card.hack p { margin: 0; font-size: 15px; }
+
+  /* バッジ */
+  .badges { display: flex; gap: 12px; margin-top: 16px; }
+  .badges img { width: 88px; height: 88px; border-radius: 16px; object-fit: cover; }
+
   /* コンペ実績リスト(罫線なし・背景色で区切る) */
   .comp { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 28px 40px; border-radius: var(--radius-cards); background: var(--color-canvas); margin-bottom: 12px; }
+  .band.gray .comp { background: var(--color-paper); }
   .comp .name { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: 0.007em; margin: 0 0 4px; }
   .comp .desc { color: var(--color-mid-gray); font-size: 17px; margin: 0; }
   .comp .score { text-align: right; font-family: var(--font-display); font-size: 28px; font-weight: 600; white-space: nowrap; }
@@ -223,6 +234,7 @@
     <span class="brand">K.N.</span>
     <ul>
       <li><a href="#about">自己紹介</a></li>
+      <li><a href="#awards">実績</a></li>
       <li><a href="#skills">スキル</a></li>
       <li><a href="#projects">つくったもの</a></li>
       <li><a href="#competitions">コンペ実績</a></li>
@@ -240,7 +252,7 @@
     <h1 class="display">データで、<br>勝ちにいく。</h1>
     <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub を見る</a>
     <a class="btn-ghost" href="#projects">つくったものを見る</a>
-    <p class="price">Python と機械学習で、コンペとツールづくりに取り組んでいます。</p>
+    <p class="price">AI 時代だからこそ、人と人のつながりを大切に。データと AI で、目の前の課題を解いています。</p>
 
     <div class="hero-visual" aria-hidden="true">
       <div class="glow"></div>
@@ -260,13 +272,13 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
 <section class="band gray" id="about">
   <div class="container">
     <h2 class="section-title">自己紹介。</h2>
-    <p class="section-lead">プログラミングを始めて 1 年目。授業と部活の合間に、データ分析コンペと「自分の困りごとを解決する小さなツール」を作っています。</p>
+    <p class="section-lead">岐阜県出身。3 歳から野球を続け、高校ではけがをきっかけにチームのデータアナリストを務めました。いまは「AI × 人間力」を軸に、コンペ・ハッカソン・研究室体験に取り組んでいます。</p>
 
     <div class="split">
       <div class="card">
-        <h3 class="big">課題を、コードで小さくする。</h3>
-        <p>大学の毎週の提出物を半自動化するツール、野球部の連絡をまとめる LINE Bot、農場シミュレーションで戦う AI エージェント。動機はいつも「面倒だから」「もっと勝ちたいから」です。</p>
-        <p>第一言語は Python。ローカルに GPU がないので、学習は Google Colab や Kaggle Notebook で回しています。</p>
+        <h3 class="big">数字と信頼で、<br>チームを動かす。</h3>
+        <p>高校野球部で対戦相手の映像を分析し、対策を提案していました。分析が受け入れられたのは、具体的な数字の根拠と、毎日の努力を見てもらえていたから。数字だけでも、努力だけでもチームは動かない。その経験が原点です。</p>
+        <p>大学では機械学習コンペやハッカソンの PM、母校の野球部と連携したデータ活用に取り組んでいます。第一言語は Python です。</p>
         <a class="arrow" href="#projects">つくったものを見る</a>
       </div>
       <div class="swatches" aria-label="興味のある分野">
@@ -283,8 +295,40 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
   </div>
 </section>
 
-<!-- ===== スキル(白帯) ===== -->
-<section class="band white" id="skills">
+<!-- ===== 実績(白帯) ===== -->
+<section class="band white" id="awards">
+  <div class="container">
+    <h2 class="section-title">1 年目の実績。</h2>
+    <p class="section-lead">2026 年 4 月の入学から、チームと一緒に積み上げてきたもの。</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="badge-new">2026.09</span>
+        <h3>Tornado2026 企業賞</h3>
+        <p>学生向け実践型ハッカソン。6 人チームの PM として、地域の困りごとと大学生をつなぐサービス「fitt0」を企画しました。</p>
+      </div>
+      <div class="card">
+        <span class="badge-new">2026 前学期</span>
+        <h3>学長表彰</h3>
+        <p>プロジェクトデザイン入門。「文章を書く時間帯で内容は変わるか」を形態素解析で検証し、最終発表会でチームが選ばれました。</p>
+      </div>
+      <div class="card">
+        <span class="badge-new">2026.09</span>
+        <h3>学長褒賞(学業)</h3>
+        <p>教育補助員を含めた学び合いを進め、学力向上に貢献したことで推薦をいただきました。</p>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="card"><div class="stat">9<span style="font-size:24px;"> / 223</span></div><div class="stat-label">BitGrit コンペ順位(上位 4%)</div></div>
+      <div class="card"><div class="stat">上位10%</div><div class="stat-label">正課学修ポイント(1 年前学期)</div></div>
+      <div class="card"><div class="stat">100km</div><div class="stat-label">100km 歩行 完歩</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== スキル(グレー帯) ===== -->
+<section class="band gray" id="skills">
   <div class="container">
     <h2 class="section-title">できること。</h2>
     <p class="section-lead">得意なのはテーブルデータの機械学習。必要に応じて Web やスクリプトも書きます。</p>
@@ -318,11 +362,63 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
   </div>
 </section>
 
-<!-- ===== つくったもの(グレー帯) ===== -->
-<section class="band gray" id="projects">
+<!-- ===== つくったもの(白帯) ===== -->
+<section class="band white" id="projects">
   <div class="container">
     <h2 class="section-title">つくったもの。</h2>
     <p class="section-lead">どれも「自分か、身近な誰かが実際に使う」ことを前提に作っています。</p>
+
+    <div class="grid-2" style="margin-bottom: 20px;">
+      <div class="card hack">
+        <img src="assets/logo-hackit.png" alt="Hackit のロゴ" width="64" height="64">
+        <div><h3>Hackit2026</h3><p>運営と出場の両方を経験(2026.08)</p></div>
+      </div>
+      <div class="card hack">
+        <img src="assets/logo-tornado.png" alt="Tornado2026 のロゴ" width="64" height="64">
+        <div><h3>Tornado2026</h3><p>PM として企業賞(2026.09)</p></div>
+      </div>
+      <div class="card hack">
+        <img src="assets/logo-jphacks.png" alt="JPHACKS のロゴ" width="64" height="64">
+        <div><h3>JPHACKS 2026</h3><p>金沢会場で出場(2026.10)</p></div>
+      </div>
+      <div class="card hack">
+        <img src="assets/logo-devfest.png" alt="DevFest 2026 のロゴ" width="64" height="64">
+        <div><h3>DevFest GDGoC Japan Hackathon 2026</h3><p>出場中(2026.11)</p></div>
+      </div>
+    </div>
+
+    <div class="card hack" style="margin-bottom: 20px;">
+      <img src="assets/logo-gnomatic.png" alt="Gnomatic のロゴ" width="64" height="64">
+      <div><h3>Gnomatic</h3><p>学部 4 年の先輩たちと、石川県の企業の AI・DX 推進に取り組んでいます。企業との面談で課題を聞き、IT で価値を返す活動です(2026.10〜)。</p></div>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="split">
+        <div>
+          <span class="badge-new">企業賞</span>
+          <h3 class="big">fitt0(Tornado2026)</h3>
+          <p>地域住民の小さな困りごとと、助けたい大学生をつなぐマッチングサービス。AI が依頼内容を整理し、活動の実績を言葉にして残します。PM として PRD・発表資料・質疑応答の準備をまとめ、3 週間のオンライン開発を進めました。</p>
+          <div class="chips"><span class="chip">PM</span><span class="chip">PRD</span><span class="chip">生成 AI</span></div>
+        </div>
+        <div class="grid-2">
+          <div><div class="stat">6</div><div class="stat-label">チームの人数</div></div>
+          <div><div class="stat">3週</div><div class="stat-label">オンライン開発期間</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 20px;">
+      <div class="card">
+        <h3>母校の野球部とのデータ活用</h3>
+        <p>研究室体験で、母校の高校野球部と連携。測定会のデータを取っても見える化できなかった、自分が選手だったころの課題を、アプリで解こうとしています。</p>
+        <div class="chips"><span class="chip">研究室体験</span><span class="chip">iOS</span><span class="chip">データ可視化</span></div>
+      </div>
+      <div class="card">
+        <h3>旅行どこいこう(JPHACKS)</h3>
+        <p>旅行の行き先を地図から選んで計画できる Web アプリ。石川・東京・大阪・京都のスポットを登録しています。</p>
+        <div class="chips"><span class="chip">Web</span><span class="chip">地図</span><span class="chip">Vercel</span></div>
+      </div>
+    </div>
 
     <div class="card" style="margin-bottom: 20px;">
       <div class="split">
@@ -354,11 +450,16 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
   </div>
 </section>
 
-<!-- ===== コンペ実績(白帯) ===== -->
-<section class="band white" id="competitions">
+<!-- ===== コンペ実績(グレー帯) ===== -->
+<section class="band gray" id="competitions">
   <div class="container">
     <h2 class="section-title">コンペ実績。</h2>
     <p class="section-lead">2026 年時点で参加したデータ分析コンペ。すべての実験を記録して、再現できる形で残しています。</p>
+
+    <div class="card hack" style="margin-bottom: 20px; background: var(--color-paper);">
+      <img src="assets/logo-datadreamers.png" alt="Data Dreamers のロゴ" width="64" height="64">
+      <div><h3>夢考房 Data Dreamers</h3><p>学内最大のデータサイエンスプロジェクト。毎週月曜に進捗を発表し、先輩から助言をもらいながらコンペに挑戦しています(2026.06〜)。</p></div>
+    </div>
 
     <div class="comp">
       <div>
@@ -372,7 +473,7 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
         <h3 class="name">BitGrit 危険発話検出</h3>
         <p class="desc">DeBERTa など 7 種のモデル × 4 seed × 5 fold に、言語モデルの困惑度を特徴量として加えてスタッキング。</p>
       </div>
-      <div class="score">7×4×5<span>モデル × seed × fold</span></div>
+      <div class="score">9 位<span>223 人中(上位 4%)</span></div>
     </div>
     <div class="comp">
       <div>
@@ -391,11 +492,40 @@ print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
   </div>
 </section>
 
+<!-- ===== 学び(白帯) ===== -->
+<section class="band white" id="learning">
+  <div class="container">
+    <h2 class="section-title">学び続けていること。</h2>
+    <p class="section-lead">授業の外でも、AI を基礎から学んでいます。</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>東京大学 松尾・岩澤研究室の講座</h3>
+        <p>大規模言語モデル(LLM)、フィジカル AI、GCI ベーシックを受講。</p>
+        <div class="badges">
+          <img src="assets/badge-llm.png" alt="松尾・岩澤研究室 大規模言語モデル講座のバッジ" width="88" height="88">
+          <img src="assets/badge-pai.png" alt="松尾・岩澤研究室 フィジカル AI 講座のバッジ" width="88" height="88">
+          <img src="assets/badge-gci.png" alt="GCI 2026 Summer BASIC のバッジ" width="88" height="88">
+        </div>
+      </div>
+      <div class="card">
+        <h3>夏期集中・先取り科目</h3>
+        <p>AI プログラミング入門、AI 応用Ⅱ(自然言語処理)、情報ネットワーク基礎。後学期は 2 年生の科目を先取りして履修中。</p>
+      </div>
+      <div class="card">
+        <h3>LAIME Kaggle Dojo</h3>
+        <p>学生団体 LAIME の Kaggle Dojo に第 3 期生として参加(2026 年 11 月〜)。</p>
+        <div class="badges"><img src="assets/logo-laime.png" alt="LAIME Kaggle Dojo のロゴ" width="88" height="88"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== 目標(グレー帯) ===== -->
 <section class="band gray goal" id="goal">
   <div class="container">
-    <h2 class="display">Kaggle<br>Grandmaster.</h2>
-    <p>2026 年 9 月、ハッカソンを終えたのを機に宣言しました。まずはメダル対象コンペで 1 枚。実験を記録し、CV を信じ、1 回に 1 つだけ変える。その積み重ねで上を目指します。</p>
+    <h2 class="display">AI がわかる、<br>人に寄り添う。</h2>
+    <p>将来は、AI がわかる IT コンサルタントとして東京で経験を積み、AI・DX が遅れている地元・岐阜に還元したいと考えています。その途中の目標として、在学中の Kaggle Grandmaster も目指しています。実験を記録し、CV を信じ、1 回に 1 つだけ変える。その積み重ねで上を目指します。</p>
     <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">進捗を GitHub で見る</a>
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
   </div>
