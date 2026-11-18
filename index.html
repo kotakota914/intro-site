@@ -223,8 +223,9 @@
 
 
   /* Honors */
-  .tabs { display: flex; gap: 8px; margin-top: 28px; border-bottom: 1.5px solid var(--rule); }
-  .tabs button { font-family: var(--jp); font-size: 15px; font-weight: 700; padding: 10px 16px; border: 0; background: none; color: var(--sub); border-bottom: 3px solid transparent; margin-bottom: -1.5px; cursor: pointer; }
+  .tabs { display: flex; gap: 4px; margin-top: 28px; border-bottom: 1.5px solid var(--rule); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { font-family: var(--jp); font-size: 15px; font-weight: 700; padding: 10px 14px; border: 0; background: none; white-space: nowrap; flex: none; color: var(--sub); border-bottom: 3px solid transparent; margin-bottom: -1.5px; cursor: pointer; }
   .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
   .tabpanel { margin-top: 20px; display: grid; gap: 12px; max-width: 820px; }
   .tabpanel[hidden] { display: none; }
@@ -550,11 +551,13 @@
 <section class="block" id="honors">
   <div class="wrap">
     <h2>オナーズプログラム</h2>
-    <p class="intro">金沢工業大学のオナーズプログラムで参加した、授業の外の講座、講演会、インターンシップです。参加して感じたことを、講座ごとに一言で残していきます。</p>
+    <p class="intro">金沢工業大学のオナーズプログラムで参加した、授業の外の講座、講演会、インターンシップ、課外プロジェクト、カンファレンスです。参加して感じたことを、講座ごとに一言で残していきます。</p>
     <div class="tabs" role="tablist" aria-label="講座の種類">
       <button role="tab" aria-selected="true" data-tab="special">特別講座・講演会</button>
       <button role="tab" aria-selected="false" data-tab="career">キャリア開発講座</button>
       <button role="tab" aria-selected="false" data-tab="intern">インターンシップ</button>
+      <button role="tab" aria-selected="false" data-tab="project">課外プロジェクト</button>
+      <button role="tab" aria-selected="false" data-tab="other">その他・カンファレンス</button>
     </div>
     <div class="tabpanel" data-panel="special">
       <article class="lec"><time>2026.07.23</time><div><h3>特別講演会「GoogleのAI開発最前線 研究開発のリアルとこれからの技術」</h3><p class="who">Google DeepMind Developer Experience Team　Juyeong Ji 氏</p><details><summary>ひとこと</summary><p>最先端のAIも、地道な研究と開発者の工夫の積み重ねでできていると知り、技術を身近に感じた。学んだ考え方を開発に生かし、AIを使いこなせる技術者を目指したい。</p></details></div></article>
@@ -575,6 +578,16 @@
       <article class="lec"><time>2026.05〜</time><div><h3>学内インターンシップ　学生ステーション 運営スタッフ</h3><details><summary>ひとこと</summary><p>これからは、学生のためになるイベントを開いたり、自分の成長につながる時間にしたりしていきたい。</p></details></div></article>
       <article class="lec"><time>2026.08.07</time><div><h3>インターンシップ　セコム株式会社</h3><details><summary>ひとこと</summary><p>「地震の被害を減らす家具の配置」をテーマにグループディスカッションをした。一人ひとりが役割を持って取り組んでいて勉強になった。</p></details></div></article>
       <article class="lec"><time>2026.09</time><div><h3>インターンシップ　Beta Computing株式会社（アプリ開発）</h3><details><summary>ひとこと</summary><p>KITの卒業生が集まってつくった5〜6人のベンチャー企業。実際に作ったアプリの話や、これからのIT業界、就活の話を聞けた。今後に生かしたい。</p></details></div></article>
+    </div>
+    <div class="tabpanel" data-panel="project" hidden>
+      <article class="lec"><time>2026.06〜</time><div><h3><a class="ext" href="https://www.kanazawa-it.ac.jp/kitnews/2023/1220_datadreamers.html" target="_blank" rel="noopener">Data Dreamers</a>（夢考房 データサイエンスプロジェクト）</h3><p class="who">100人以上が所属する学内最大のプロジェクト。機械学習コンペに取り組み、毎週の進捗発表で先輩からフィードバックをもらっている。</p></div></article>
+      <article class="lec"><time>2026〜</time><div><h3><a class="ext" href="https://developershub.jp/" target="_blank" rel="noopener">Developers Hub</a></h3><p class="who">2027年9月の北陸ITカンファレンスに向けて、スポンサーチームとして企業との面談を重ね、スポンサーを獲得した。</p></div></article>
+      <article class="lec"><time>2026〜</time><div><h3>情報セキュリティ・スキルアッププロジェクト</h3><p class="who">毎週、CTF の問題に取り組んでセキュリティの基礎を学んでいる。</p></div></article>
+    </div>
+    <div class="tabpanel" data-panel="other" hidden>
+      <article class="lec"><time>2026</time><div><h3>AI Engineering Challenge 表彰式</h3><p class="who">上位チームの解法を直接聞き、学ぶために参加した。</p></div></article>
+      <article class="lec plan"><time>2026.12.08</time><div><h3><a class="ext" href="https://www.cyberagent.co.jp/techinfo/news/detail/id=33946" target="_blank" rel="noopener">ABEMA Developer Conference 2026</a>（東京・渋谷）<span class="pill">参加予定</span></h3></div></article>
+      <article class="lec plan"><time>2027.09</time><div><h3><a class="ext" href="https://hokuriku-it-conf.com/" target="_blank" rel="noopener">北陸ITカンファレンス</a>（運営として参加）<span class="pill">参加予定</span></h3></div></article>
     </div>
   </div>
 </section>
