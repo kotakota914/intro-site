@@ -183,11 +183,12 @@
   @media (max-width: 560px) { .memo { grid-template-columns: 1fr; gap: 4px; } }
 
   /* スキル */
-  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 32px; }
   .skill h3 { font-size: 17px; font-weight: 700; }
   .skill ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .skill li { font-size: 14px; background: var(--paper); border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 12px; }
-  @media (max-width: 760px) { .skills { grid-template-columns: 1fr; } }
+  @media (max-width: 960px) { .skills { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
 
   footer { padding: 48px 0 64px; border-top: 1px solid var(--rule); color: var(--sub); font-size: 14px; }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
@@ -584,6 +585,7 @@
     <div class="skills">
       <div class="skill"><h3>機械学習・データ分析</h3><ul><li>Python</li><li>pandas</li><li>scikit-learn</li><li>LightGBM</li><li>XGBoost</li><li>CatBoost</li><li>Janome</li></ul></div>
       <div class="skill"><h3>アプリ・Web</h3><ul><li>React</li><li>SwiftUI</li><li>Node.js</li><li>HTML / CSS / JS</li><li>LINE Messaging API</li><li>Vercel</li></ul></div>
+      <div class="skill"><h3>使っている AI</h3><ul><li>Claude（Claude Code）</li><li>ChatGPT</li><li>Codex</li><li>Gemini</li></ul></div>
       <div class="skill"><h3>チーム・人</h3><ul><li>PM（Tornado2026）</li><li>PRD・発表資料</li><li>企業との面談</li><li>接客（スターバックス）</li></ul></div>
     </div>
   </div>
