@@ -46,7 +46,7 @@
   .who .face { width: 72px; height: 72px; font-size: 18px; margin: 0; }
   .who .name { font-size: 22px; font-weight: 900; line-height: 1.3; }
   .who .name-en { font-family: var(--num); font-size: 15px; font-weight: 600; letter-spacing: .06em; color: var(--sub); }
-  .big { font-size: clamp(64px, 15vw, 196px); font-weight: 900; line-height: 1; letter-spacing: -.01em; margin: 40px 0 8px; display: flex; flex-wrap: wrap; align-items: baseline; gap: .12em; }
+  .hero-big { font-size: clamp(64px, 15vw, 196px); font-weight: 900; line-height: 1; letter-spacing: -.01em; margin: 40px 0 8px; display: flex; flex-wrap: wrap; align-items: baseline; gap: .12em; }
   .b-ai { font-family: var(--num); font-weight: 700; color: var(--ai); font-size: 1.12em; }
   .b-x { font-weight: 400; color: var(--ink); font-size: .6em; }
   .b-hu { color: var(--hu); }
@@ -192,12 +192,23 @@
   footer { padding: 48px 0 64px; border-top: 1px solid var(--rule); color: var(--sub); font-size: 14px; }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
+
+  /* イベントごとの背景 */
+  .stop .card.themed { position: relative; overflow: hidden; background: linear-gradient(100deg, #fff 55%, color-mix(in srgb, var(--theme) 9%, #fff)); }
+  .stop .card.themed::after { content: ""; position: absolute; right: -18px; top: 50%; width: 132px; height: 132px; transform: translateY(-50%) rotate(-8deg); background: var(--logo) center / contain no-repeat; opacity: .12; border-radius: 28px; pointer-events: none; }
+  .stop .card.themed > * { position: relative; z-index: 1; }
+  @media (min-width: 641px) { .stop .card.themed { padding-right: 112px; } }
+  .stop .card.devfest { background: linear-gradient(100deg, #fff 55%, #F1F5FE); }
+  .stop .card.devfest::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, #4285F4 0 25%, #EA4335 25% 50%, #FBBC04 50% 75%, #34A853 75%); }
+  .stop .card h3 img { box-shadow: 0 0 0 1px var(--rule); }
+  @media (max-width: 640px) { .stop .card.themed::after { width: 96px; height: 96px; right: -24px; } }
+
   /* 動き */
   @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
-  .big > span { display: inline-block; animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
-  .big .b-x { animation-delay: .25s; } .big .b-hu { animation-delay: .4s; }
+  .hero-big > span { display: inline-block; animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-big .b-x { animation-delay: .25s; } .hero-big .b-hu { animation-delay: .4s; }
   .hero-map path:not([stroke-dasharray]) { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.6s .7s cubic-bezier(.6,0,.2,1) forwards; }
   .hero-map rect, .hero-map text, .hero-map path[stroke-dasharray] { animation: pop .5s 1.9s both; }
   .train { position: absolute; z-index: 3; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 15px; box-shadow: 0 0 0 5px #fff; left: calc(88px + (var(--x-ai) + var(--x-hu)) / 2 - 17px); top: 0; transition: top .15s linear; pointer-events: none; }
@@ -208,7 +219,7 @@
   .js .stop:not(.seen) .card { opacity: 0; transform: translateX(16px); }
   @media (max-width: 640px) { .train { left: calc(58px + (var(--x-ai) + var(--x-hu)) / 2 - 14px); width: 28px; height: 28px; font-size: 12px; } }
   @media (prefers-reduced-motion: reduce) {
-    .big > span, .hero-map path, .hero-map rect, .hero-map text { animation: none; }
+    .hero-big > span, .hero-map path, .hero-map rect, .hero-map text { animation: none; }
     .hero-map path:not([stroke-dasharray]) { stroke-dashoffset: 0; }
     .js .stop:not(.seen) .card { opacity: 1; transform: none; }
     .train { transition: none; }
@@ -237,7 +248,7 @@
       <div class="face" aria-label="写真（準備中）">永井</div>
       <div><p class="name">永井 晃太朗</p><p class="name-en">NAGAI KOTARO　金沢工業大学 知能情報システム学科 1年</p></div>
     </div>
-    <h1 class="big"><span class="b-ai">AI</span><span class="b-x">×</span><span class="b-hu">人間力</span></h1>
+    <h1 class="hero-big"><span class="b-ai">AI</span><span class="b-x">×</span><span class="b-hu">人間力</span></h1>
     <div class="hero-row">
       <div>
         <p class="lead">AI時代だからこそ、人と人のつながりを大切に。<br>AIの力と人間力で、AI格差のない岐阜をつくる。</p>
@@ -364,21 +375,21 @@
         <li class="stop both"><div class="when">2026.04</div><div class="dot"></div><div class="card"><h3>金沢工業大学に入学</h3><p>AIを学ぶために、情報理工学部 知能情報システム学科へ。</p></div></li>
         <li class="stop hu"><div class="when">2026.05</div><div class="dot"></div><div class="card"><h3>学生ステーションの学生スタッフ</h3><p>学内インターンシップとして、学生からの質問対応や落とし物管理を担当。現場の声から、スタッフ用のシフト管理アプリづくりが始まった。</p></div></li>
         <li class="stop both"><div class="when">2026.07</div><div class="dot"></div><div class="card"><h3>プロジェクトデザイン入門で学長表彰</h3><p>6人チームで「文章を書く時間帯で内容は変わるか」を形態素解析で検証。最終発表会でチームが選ばれた。</p><span class="award">学長表彰</span></div></li>
-        <li class="stop ai"><div class="when">2026.06</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-datadreamers.png" alt="">夢考房 Data Dreamers に参加</h3><p>機械学習コンペに挑戦。毎週月曜に進捗を発表し、先輩から助言をもらって改善を続けている。</p></div></li>
+        <li class="stop ai"><div class="when">2026.06</div><div class="dot"></div><div class="card themed" style="--theme:#1B4F8A;--logo:url(assets/logo-datadreamers.png)"><h3><img src="assets/logo-datadreamers.png" alt="">夢考房 Data Dreamers に参加</h3><p>機械学習コンペに挑戦。毎週月曜に進捗を発表し、先輩から助言をもらって改善を続けている。</p></div></li>
         <li class="stop ai"><div class="when">2026.06–08</div><div class="dot"></div><div class="card"><h3>東京大学 松尾・岩澤研究室の講座</h3><p>大規模言語モデル、フィジカルAI、深層学習、GCIベーシックの4講座を受講。</p></div></li>
         <li class="stop hu"><div class="when">2026.07</div><div class="dot"></div><div class="card"><h3>スターバックスでアルバイト</h3><p>お客様一人ひとりが満足して帰れる接客を意識。対話から満足をつくる姿勢は、アプリづくりでも一番大事にしている。</p></div></li>
-        <li class="stop both"><div class="when">2026.08</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-hackit.png" alt="">Hackit2026 に運営と出場の両方で参加</h3><p>初めてのハッカソン。アイデア出しの難しさと、チームで形にする面白さを知った。</p></div></li>
+        <li class="stop both"><div class="when">2026.08</div><div class="dot"></div><div class="card themed" style="--theme:#E07B2A;--logo:url(assets/logo-hackit.png)"><h3><img src="assets/logo-hackit.png" alt="">Hackit2026 に運営と出場の両方で参加</h3><p>初めてのハッカソン。アイデア出しの難しさと、チームで形にする面白さを知った。</p></div></li>
         <li class="stop ai"><div class="when">2026.08</div><div class="dot"></div><div class="card"><h3>夏期集中講座で AI を集中的に学ぶ</h3><p>AIプログラミング入門、AI応用Ⅱ（自然言語処理）、情報ネットワーク基礎、ビジネス思考法入門。数理リテラシー特別講座も2つ修了。</p></div></li>
-        <li class="stop both big"><div class="when">2026.09</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-tornado.png" alt="">Tornado2026 で企業賞</h3><p>6人チームのPMとして、地域の困りごとと大学生をつなぐ「fitt0」を企画。良いものを作るだけでなく、お金になる形にして初めて価値が届くと学んだ。<a class="ext" href="https://www.youtube.com/watch?v=nB_QOWTI4G8" target="_blank" rel="noopener">紹介動画</a></p><span class="award">企業賞</span></div></li>
+        <li class="stop both big"><div class="when">2026.09</div><div class="dot"></div><div class="card themed" style="--theme:#18202B;--logo:url(assets/logo-tornado.png)"><h3><img src="assets/logo-tornado.png" alt="">Tornado2026 で企業賞</h3><p>6人チームのPMとして、地域の困りごとと大学生をつなぐ「fitt0」を企画。良いものを作るだけでなく、お金になる形にして初めて価値が届くと学んだ。<a class="ext" href="https://www.youtube.com/watch?v=nB_QOWTI4G8" target="_blank" rel="noopener">紹介動画</a></p><span class="award">企業賞</span></div></li>
         <li class="stop hu"><div class="when">2026.09</div><div class="dot"></div><div class="card"><h3>学長褒賞（学業）</h3><p>教育補助員を含めた学び合いを進め、学力向上に貢献したことで推薦をいただいた。</p><span class="award">学長褒賞</span></div></li>
         <li class="stop ai"><div class="when">2026.09</div><div class="dot"></div><div class="card"><h3>BitGrit のコンペで 223人中 9位</h3><p>上位4%。LightGBM を中心に、特徴量とパラメータの調整を重ねた。</p></div></li>
-        <li class="stop both"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-gnomatic.png" alt="">Gnomatic で石川県の AI・DX 推進</h3><p>学部4年の先輩たちと、企業との面談で課題を聞き、IT で価値を返す活動を始めた。都市ではない地域ほど AI・DX が遅れていると感じた。</p></div></li>
+        <li class="stop both"><div class="when">2026.10</div><div class="dot"></div><div class="card themed" style="--theme:#E3262E;--logo:url(assets/logo-gnomatic.png)"><h3><img src="assets/logo-gnomatic.png" alt="">Gnomatic で石川県の AI・DX 推進</h3><p>学部4年の先輩たちと、企業との面談で課題を聞き、IT で価値を返す活動を始めた。都市ではない地域ほど AI・DX が遅れていると感じた。</p></div></li>
         <li class="stop ai"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3>山本研究室の研究室体験</h3><p>母校の野球部と連携し、測定会のデータを見える化するアプリを開発中。研究テーマは「高校野球選手の冬季トレーニングと体組成」。</p></div></li>
-        <li class="stop ai"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-jphacks.png" alt="">JPHACKS 2026 に出場</h3><p>旅行の行き先を地図から選べる Web アプリ「<a class="ext" href="https://kz-2609.vercel.app/" target="_blank" rel="noopener">旅行どこいこう</a>」を開発。</p></div></li>
+        <li class="stop ai"><div class="when">2026.10</div><div class="dot"></div><div class="card themed" style="--theme:#3F9BE0;--logo:url(assets/logo-jphacks.png)"><h3><img src="assets/logo-jphacks.png" alt="">JPHACKS 2026 に出場</h3><p>旅行の行き先を地図から選べる Web アプリ「<a class="ext" href="https://kz-2609.vercel.app/" target="_blank" rel="noopener">旅行どこいこう</a>」を開発。</p></div></li>
         <li class="stop hu"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3>100km 歩行を完歩</h3><p>寝る間もなく足が限界になる中、仲間と助け合って歩き切った。</p></div></li>
         <li class="stop hu"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3>Developers Hub でスポンサーを獲得</h3><p>2027年9月の北陸ITカンファレンスに向けて、スポンサーチームとして企業との面談を重ねた。</p></div></li>
-        <li class="stop ai"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-laime.png" alt="">LAIME Kaggle Dojo 第3期生</h3><p>Kaggle Grandmaster・Master の指導のもと、メダル獲得を目指す半年間のプログラム。</p></div></li>
-        <li class="stop ai"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-devfest.png" alt="">DevFest GDGoC Japan Hackathon 2026</h3><p>Google Cloud と Gemini を使ったプロダクト開発に挑戦中。</p></div></li>
+        <li class="stop ai"><div class="when">2026.11</div><div class="dot"></div><div class="card themed" style="--theme:#D9662B;--logo:url(assets/logo-laime.png)"><h3><img src="assets/logo-laime.png" alt="">LAIME Kaggle Dojo 第3期生</h3><p>Kaggle Grandmaster・Master の指導のもと、メダル獲得を目指す半年間のプログラム。</p></div></li>
+        <li class="stop ai"><div class="when">2026.11</div><div class="dot"></div><div class="card themed devfest" style="--theme:#4285F4;--logo:url(assets/logo-devfest.png)"><h3><img src="assets/logo-devfest.png" alt="">DevFest GDGoC Japan Hackathon 2026</h3><p>Google Cloud と Gemini を使ったプロダクト開発に挑戦中。</p></div></li>
       <li class="stop both big"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3>シフト管理アプリを iOS アプリに</h3><p>学生ステーションのシフト管理アプリを iOS 化。自分と先輩のスマホにビルドし、実際の業務で使い始めた。次の目標は App Store での公開。</p></div></li></ol>
 
       <div class="now"><div class="when">TODAY</div><div class="bar"><span>現在地　2026年11月</span></div></div>
