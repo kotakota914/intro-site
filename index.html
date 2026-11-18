@@ -2,563 +2,544 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>K.N. — Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永井 晃太朗 | Portfolio</title>
+<meta name="description" content="金沢工業大学 知能情報システム学科 1年 永井晃太朗のポートフォリオ。AI と人間力の 2 本の路線で、これまでとこれからを描いています。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ===== デザイントークン(DESIGN.md の Quick Start をそのまま採用) ===== */
   :root {
-    --color-primary-ink: #1d1d1f;
-    --color-mid-gray: #707070;
-    --color-deep-gray: #474747;
-    --color-hairline: #d6d6d6;
-    --color-canvas: #f5f5f7;
-    --color-paper: #ffffff;
-    --color-cool-wash: #e8e8ed;
-    --color-faded-surface: #fafafc;
-    --color-quiet-dot: #777779;
-    --color-electric-blue: #0071e3;
-    --color-link-blue: #0066cc;
-    --color-ember: #b64400;
-    --color-sky: #c8d8e0;
-    --color-citrus: #dddc8c;
-    --color-starlight: #f0e4d3;
-    --color-silver: #e3e4e5;
-    --color-blush: #e8d0d0;
-    --color-indigo: #596680;
-    --color-midnight: #2e3642;
+    --bg: #FFFFFF;
+    --paper: #FFFFFF;
+    --ink: #18202B;
+    --sub: #5B6575;
+    --rule: #DCE1E8;
+    --ai: #2E5BFF;
+    --hu: #12A06A;
+    --ai-soft: #E8EEFF;
+    --hu-soft: #E3F5EC;
+    --jp: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+    --num: "Barlow Condensed", "Zen Kaku Gothic New", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { background: var(--bg); color: var(--ink); font-family: var(--jp); font-size: 16px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--ai); outline-offset: 3px; border-radius: 6px; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-    --font-display: "Inter", "Noto Sans JP", "SF Pro Display", "Hiragino Sans", "Yu Gothic UI", system-ui, sans-serif;
-    --font-text: "Inter", "Noto Sans JP", "SF Pro Text", "Hiragino Sans", "Yu Gothic UI", system-ui, sans-serif;
+  /* ナビ */
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px); border-bottom: 1px solid var(--rule); }
+  .nav .wrap { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .nav .me { font-weight: 700; text-decoration: none; letter-spacing: .02em; }
+  .nav ul { display: flex; gap: 22px; list-style: none; font-size: 14px; }
+  .nav ul a { text-decoration: none; color: var(--sub); }
+  .nav ul a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .nav ul { gap: 14px; font-size: 13px; } .nav ul li.opt { display: none; } }
 
-    --radius-cards: 28px;
-    --radius-buttons: 980px;
-    --page-max-width: 1200px;
+  /* ヒーロー */
+  .hero { padding: 56px 0 64px; }
+  .who { display: flex; align-items: center; gap: 18px; }
+  .who .face { width: 72px; height: 72px; font-size: 18px; margin: 0; }
+  .who .name { font-size: 22px; font-weight: 900; line-height: 1.3; }
+  .who .name-en { font-family: var(--num); font-size: 15px; font-weight: 600; letter-spacing: .06em; color: var(--sub); }
+  .big { font-size: clamp(64px, 15vw, 196px); font-weight: 900; line-height: 1; letter-spacing: -.01em; margin: 40px 0 8px; display: flex; flex-wrap: wrap; align-items: baseline; gap: .12em; }
+  .b-ai { font-family: var(--num); font-weight: 700; color: var(--ai); font-size: 1.12em; }
+  .b-x { font-weight: 400; color: var(--ink); font-size: .6em; }
+  .b-hu { color: var(--hu); }
+  .hero-row { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; margin-top: 24px; }
+  .hero .lead { font-size: clamp(18px, 2.2vw, 22px); font-weight: 700; line-height: 1.7; }
+  .hero .about-line { color: var(--sub); margin-top: 12px; max-width: 34em; }
+  .hero .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  @media (max-width: 860px) { .hero-row { grid-template-columns: 1fr; } .hero-map { max-width: 380px; } }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; border: 1.5px solid var(--ink); }
+  .btn.solid { background: var(--ink); color: #fff; }
+  .face { width: 96px; height: 96px; border-radius: 50%; background: var(--hu-soft); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--hu); display: grid; place-items: center; font-weight: 900; color: var(--hu); overflow: hidden; flex: none; }
+  .face img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-map { width: 100%; height: auto; }
+
+  .work .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .work .links a { font-size: 13px; padding: 6px 12px; }
+  .feature { display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: center; margin-top: 36px; padding: 36px; border: 1.5px solid var(--ink); border-radius: 20px; }
+  .feature .tag { font-size: 13px; font-weight: 700; color: var(--hu); }
+  .feature h3 { font-size: clamp(24px, 3vw, 30px); font-weight: 900; margin-top: 6px; line-height: 1.4; }
+  .feature p { color: var(--sub); margin-top: 12px; }
+  .feature dl { margin-top: 16px; font-size: 15px; display: grid; grid-template-columns: 7em 1fr; gap: 8px 16px; }
+  .feature dt { font-weight: 700; } .feature dd { color: var(--sub); }
+  .feature .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .btn.soon { border-style: dashed; color: var(--sub); border-color: var(--sub); }
+  .feature-shot { aspect-ratio: 9 / 19; max-height: 460px; justify-self: center; width: 100%; max-width: 230px; border-radius: 36px; border: 8px solid var(--ink); background: var(--hu-soft); display: grid; place-items: center; text-align: center; color: var(--hu); font-weight: 700; font-size: 14px; }
+  @media (max-width: 860px) { .feature { grid-template-columns: 1fr; padding: 24px; } .feature dl { grid-template-columns: 1fr; gap: 2px; } .feature dd { margin-bottom: 8px; } }
+
+  /* セクション共通 */
+  section.block { padding: 72px 0; }
+  section.block + section.block { border-top: 1px solid var(--rule); }
+  .block h2 { font-size: clamp(28px, 4vw, 38px); font-weight: 900; letter-spacing: .02em; }
+  .block .intro { color: var(--sub); margin-top: 10px; max-width: 40em; }
+
+  /* Story */
+  .chapters { margin-top: 40px; border-top: 1.5px solid var(--ink); }
+  .chapter { display: grid; grid-template-columns: 180px 1fr; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--rule); }
+  .ch-age { font-weight: 900; font-size: 22px; line-height: 1.2; }
+  .ch-num { font-family: var(--num); font-size: 72px; font-weight: 700; line-height: .9; margin-right: 4px; }
+  .ch-body { max-width: 40em; }
+  .ch-body h3 { font-size: 22px; font-weight: 900; line-height: 1.5; }
+  .ch-body p { margin-top: 12px; }
+  .ch-body blockquote { margin-top: 24px; padding: 18px 22px; border-left: 5px solid var(--hu); background: var(--hu-soft); border-radius: 0 12px 12px 0; font-weight: 700; font-size: 18px; }
+  .ch-body cite { display: block; font-style: normal; font-weight: 400; font-size: 14px; color: var(--sub); margin-top: 4px; }
+  @media (max-width: 760px) { .chapter { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; } .ch-num { font-size: 56px; } }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 36px; }
+  .about-grid p + p { margin-top: 14px; }
+  .facts { list-style: none; border-top: 1px solid var(--rule); }
+  .facts li { display: grid; grid-template-columns: 7.5em 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+  .facts li span:first-child { color: var(--sub); }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* 路線図ロードマップ */
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; font-size: 14px; font-weight: 700; background: var(--paper); border: 1.5px solid var(--rule); color: var(--sub); cursor: pointer; font-family: var(--jp); }
+  .chip[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
+  .chip i { width: 22px; height: 6px; border-radius: 3px; display: inline-block; }
+  .chip .i-ai { background: var(--ai); }
+  .chip .i-hu { background: var(--hu); }
+  .chip .i-both { background: linear-gradient(90deg, var(--ai) 50%, var(--hu) 50%); }
+  .legend-note { color: var(--sub); font-size: 13px; margin-top: 10px; }
+
+  .route { --track: 112px; --x-ai: 38px; --x-hu: 74px; position: relative; margin-top: 36px; }
+  .route ol { list-style: none; position: relative; }
+  .route ol::before, .route ol::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6px; border-radius: 3px; }
+  .route ol::before { left: calc(88px + var(--x-ai) - 3px); background: var(--ai); }
+  .route ol::after  { left: calc(88px + var(--x-hu) - 3px); background: var(--hu); }
+  .route ol.future::before { background: repeating-linear-gradient(to bottom, var(--ai) 0 10px, transparent 10px 18px); }
+  .route ol.future::after  { background: repeating-linear-gradient(to bottom, var(--hu) 0 10px, transparent 10px 18px); }
+
+  .stop { display: grid; grid-template-columns: 88px var(--track) 1fr; align-items: start; padding: 14px 0; position: relative; }
+  .stop .when { font-family: var(--num); font-weight: 600; font-size: 18px; letter-spacing: .04em; color: var(--sub); text-align: right; padding-right: 10px; padding-top: 14px; line-height: 1.2; }
+  .stop .dot { position: relative; height: 100%; }
+  .stop .dot::before { content: ""; position: absolute; top: 16px; width: 20px; height: 20px; border-radius: 50%; background: var(--paper); border: 5px solid; z-index: 1; }
+  .stop.ai .dot::before { left: calc(var(--x-ai) - 10px); border-color: var(--ai); }
+  .stop.hu .dot::before { left: calc(var(--x-hu) - 10px); border-color: var(--hu); }
+  .stop.both .dot::before { left: calc(var(--x-ai) - 13px); width: calc(var(--x-hu) - var(--x-ai) + 26px); border-radius: 13px; height: 26px; top: 13px; border-color: var(--ink); }
+  .stop .card { background: var(--paper); border: 1.5px solid var(--rule); border-radius: 14px; padding: 16px 20px; }
+  .stop.big .card { border-color: var(--ink); }
+  .stop.ai .card { border-left: 5px solid var(--ai); }
+  .stop.hu .card { border-left: 5px solid var(--hu); }
+  .stop .card h3 { font-size: 18px; font-weight: 700; line-height: 1.5; display: flex; align-items: center; gap: 10px; }
+  .stop .card h3 img { width: 30px; height: 30px; border-radius: 8px; flex: none; }
+  .stop .card p { color: var(--sub); font-size: 15px; margin-top: 4px; }
+  .stop .card .award { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink); background: #FFF4C2; border-radius: 6px; padding: 2px 8px; }
+  .stop .card a.ext { text-decoration: none; border-bottom: 1px solid currentColor; }
+  .stop.hidden { display: none; }
+
+  .now { display: grid; grid-template-columns: 88px var(--track) 1fr; align-items: center; padding: 18px 0; }
+  .now .when { font-family: var(--num); font-weight: 700; font-size: 18px; text-align: right; padding-right: 10px; }
+  .now .bar { grid-column: 2 / 4; display: flex; align-items: center; gap: 12px; font-weight: 900; }
+  .now .bar::before { content: ""; flex: none; width: var(--track); height: 3px; background: var(--ink); }
+  .now .bar span { background: var(--ink); color: #fff; padding: 4px 14px; border-radius: 999px; font-size: 14px; }
+
+  .terminal { display: grid; grid-template-columns: 88px var(--track) 1fr; align-items: center; padding-top: 10px; }
+  .terminal .sign { grid-column: 2 / 4; display: flex; align-items: center; gap: 18px; }
+  .terminal .plate { width: calc(var(--x-hu) - var(--x-ai) + 56px); margin-left: calc(var(--x-ai) - 28px); height: 56px; border-radius: 28px; background: var(--ink); color: #fff; display: grid; place-items: center; font-weight: 900; font-size: 20px; flex: none; }
+  .terminal p { font-weight: 700; font-size: 17px; line-height: 1.6; }
+  .terminal p span { display: block; font-weight: 400; color: var(--sub); font-size: 15px; }
+
+  @media (max-width: 640px) {
+    .route { --track: 64px; --x-ai: 20px; --x-hu: 44px; }
+    .stop, .now, .terminal { grid-template-columns: 58px var(--track) 1fr; }
+    .route ol::before { left: calc(58px + var(--x-ai) - 3px); }
+    .route ol::after { left: calc(58px + var(--x-hu) - 3px); }
+    .stop .when, .now .when { font-size: 12.5px; padding-right: 4px; letter-spacing: 0; }
+    .stop .dot::before { width: 16px; height: 16px; border-width: 4px; }
+    .stop.ai .dot::before { left: calc(var(--x-ai) - 8px); }
+    .stop.hu .dot::before { left: calc(var(--x-hu) - 8px); }
+    .stop .card { padding: 14px 16px; }
+    .terminal .plate { font-size: 15px; }
   }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--color-paper);
-    color: var(--color-primary-ink);
-    font-family: var(--font-text);
-    font-size: 17px;
-    line-height: 1.47;
-    letter-spacing: -0.022em;
-    font-feature-settings: "tnum" 1;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--color-link-blue); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .container { max-width: var(--page-max-width); margin: 0 auto; padding: 0 40px; }
+  /* 作品 */
+  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+  .work { background: var(--paper); border: 1.5px solid var(--rule); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; }
+  .work .tag { font-size: 13px; font-weight: 700; color: var(--sub); }
+  .work h3 { font-size: 20px; font-weight: 900; margin-top: 6px; line-height: 1.5; }
+  .work p { color: var(--sub); font-size: 15px; margin-top: 8px; }
+  .work details { margin-top: 14px; border-top: 1px solid var(--rule); padding-top: 12px; }
+  .work summary { cursor: pointer; font-weight: 700; font-size: 15px; }
+  .work dl { margin-top: 10px; font-size: 14.5px; }
+  .work dt { font-weight: 700; margin-top: 10px; }
+  .work dd { color: var(--sub); }
+  @media (max-width: 900px) { .works { grid-template-columns: 1fr; } }
 
-  /* ===== グローバルナビ(44px・スクロールで曇りガラス) ===== */
-  .nav {
-    position: sticky; top: 0; z-index: 10;
-    height: 44px;
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    transition: background .3s;
-  }
-  .nav.scrolled { background: rgba(250,250,252,0.9); }
-  .nav .container {
-    height: 100%; display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav .brand { font-size: 14px; font-weight: 600; color: var(--color-primary-ink); letter-spacing: -0.01em; }
-  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
-  .nav ul a { font-size: 12px; color: var(--color-primary-ink); letter-spacing: -0.01em; opacity: .85; }
-  .nav ul a:hover { opacity: 1; text-decoration: none; }
+  /* メモ */
+  .memos { margin-top: 32px; display: grid; gap: 14px; max-width: 760px; }
+  .memo { display: grid; grid-template-columns: 6.5em 1fr; gap: 16px; background: var(--paper); border: 1.5px solid var(--rule); border-radius: 14px; padding: 18px 20px; }
+  .memo time { font-family: var(--num); font-weight: 600; font-size: 17px; color: var(--sub); }
+  .memo p { font-size: 16px; }
+  .memo p span { display: block; color: var(--sub); font-size: 14px; margin-top: 2px; }
+  @media (max-width: 560px) { .memo { grid-template-columns: 1fr; gap: 4px; } }
 
-  /* ===== ヒーロー ===== */
-  .hero { text-align: center; padding: 120px 0 100px; }
-  .eyebrow { font-size: 17px; color: var(--color-primary-ink); margin: 0 0 12px; font-weight: 400; }
-  .badge-new { display: block; color: var(--color-ember); font-size: 14px; font-weight: 500; margin-bottom: 8px; letter-spacing: 0; }
-  .display {
-    font-family: var(--font-display);
-    font-size: clamp(56px, 9vw, 96px);
-    font-weight: 700;
-    line-height: 1.04;
-    letter-spacing: -1.44px;
-    margin: 0 0 32px;
-  }
-  .btn {
-    display: inline-block;
-    background: var(--color-electric-blue);
-    color: #fff;
-    border-radius: var(--radius-buttons);
-    padding: 11px 16px;
-    font-size: 17px;
-    font-weight: 400;
-    letter-spacing: -0.022em;
-  }
-  .btn:hover { text-decoration: none; filter: brightness(1.08); }
-  .btn-ghost {
-    display: inline-block;
-    border: 1px solid var(--color-primary-ink);
-    color: var(--color-primary-ink);
-    border-radius: 999px;
-    padding: 10px 16px;
-    font-size: 17px;
-    margin-left: 12px;
-  }
-  .btn-ghost:hover { background: var(--color-cool-wash); text-decoration: none; }
-  .hero .price { color: var(--color-mid-gray); font-size: 17px; margin-top: 20px; }
-  .hero-visual {
-    margin: 64px auto 0;
-    max-width: 980px;
-    height: 360px;
-    border-radius: var(--radius-cards);
-    background: linear-gradient(184deg, #1d1d1f 20%, #0000f9 76%, #252525 95%);
-    display: flex; align-items: flex-end; justify-content: flex-start;
-    padding: 40px;
-    color: #fff;
-    text-align: left;
-    overflow: hidden;
-    position: relative;
-  }
-  .hero-visual .code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 14px; line-height: 1.6; opacity: .9; white-space: pre; margin: 0;
-  }
-  .hero-visual .glow {
-    position: absolute; right: -80px; top: -80px; width: 360px; height: 360px;
-    border-radius: 50%; background: radial-gradient(circle, rgba(221,220,140,.55), transparent 65%);
-  }
+  /* スキル */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .skill h3 { font-size: 17px; font-weight: 700; }
+  .skill ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .skill li { font-size: 14px; background: var(--paper); border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 12px; }
+  @media (max-width: 760px) { .skills { grid-template-columns: 1fr; } }
 
-  /* ===== バンド(白 ↔ #f5f5f7 を交互に) ===== */
-  .band { padding: 110px 0; }
-  .band.gray { background: var(--color-canvas); }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: 32px; font-weight: 600; letter-spacing: 0.007em; line-height: 1.14;
-    margin: 0 0 12px;
-  }
-  .section-lead { font-size: 21px; letter-spacing: 0.011em; color: var(--color-mid-gray); margin: 0 0 48px; max-width: 720px; line-height: 1.38; }
+  footer { padding: 48px 0 64px; border-top: 1px solid var(--rule); color: var(--sub); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
-  /* カード(28px・影なし・枠なし) */
-  .card {
-    background: var(--color-paper);
-    border-radius: var(--radius-cards);
-    padding: 40px;
-  }
-  .band.white .card { background: var(--color-canvas); }
-  .card h3 {
-    font-family: var(--font-display);
-    font-size: 28px; font-weight: 600; letter-spacing: 0.007em; line-height: 1.14;
-    margin: 0 0 12px;
-  }
-  .card h3.big { font-size: 40px; line-height: 1.1; margin-bottom: 16px; }
-  .card p { color: var(--color-mid-gray); margin: 0 0 10px; }
-  .card .arrow { color: var(--color-link-blue); display: inline-block; margin-top: 8px; }
-  .card .arrow::after { content: " ›"; }
-
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
-
-  /* 数値タイル */
-  .stat { font-family: var(--font-display); font-size: 56px; font-weight: 700; letter-spacing: -0.28px; line-height: 1.07; }
-  .stat-label { font-size: 14px; color: var(--color-mid-gray); letter-spacing: -0.224px; margin-top: 6px; }
-
-  /* 色見本カード(製品カラーの代わりに「興味の色」) */
-  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .swatch {
-    aspect-ratio: 1 / 1; border-radius: var(--radius-cards);
-    display: flex; align-items: flex-end; padding: 20px;
-    font-size: 14px; font-weight: 600; color: var(--color-primary-ink); letter-spacing: -0.01em;
-  }
-  .swatch.dark { color: #fff; }
-
-  /* スキルのチップ */
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .chip {
-    background: var(--color-cool-wash); color: var(--color-primary-ink);
-    border-radius: 999px; padding: 6px 14px; font-size: 14px; letter-spacing: -0.224px;
-  }
-
-  /* 外部リンク */
-  a.ext { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(0,113,227,.35); }
-  a.ext:hover { color: var(--color-link, #0066cc); border-bottom-color: currentColor; }
-  a.ext::after { content: " \2197"; font-size: .8em; opacity: .6; }
-
-  /* ハッカソンのロゴ付きカード */
-  .card.hack { display: flex; align-items: center; gap: 20px; padding: 28px; }
-  .card.hack img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
-  .card.hack h3 { font-size: 21px; margin: 0 0 4px; }
-  .card.hack p { margin: 0; font-size: 15px; }
-
-  /* バッジ */
-  .badges { display: flex; gap: 12px; margin-top: 16px; }
-  .badges img { width: 88px; height: 88px; border-radius: 16px; object-fit: cover; }
-
-  /* コンペ実績リスト(罫線なし・背景色で区切る) */
-  .comp { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 28px 40px; border-radius: var(--radius-cards); background: var(--color-canvas); margin-bottom: 12px; }
-  .band.gray .comp { background: var(--color-paper); }
-  .comp .name { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: 0.007em; margin: 0 0 4px; }
-  .comp .desc { color: var(--color-mid-gray); font-size: 17px; margin: 0; }
-  .comp .score { text-align: right; font-family: var(--font-display); font-size: 28px; font-weight: 600; white-space: nowrap; }
-  .comp .score span { display: block; font-size: 12px; color: var(--color-mid-gray); font-weight: 400; letter-spacing: -0.12px; }
-
-  /* ゴール(巨大見出し) */
-  .goal { text-align: center; }
-  .goal .display { margin-bottom: 20px; }
-  .goal p { max-width: 640px; margin: 0 auto 32px; color: var(--color-mid-gray); font-size: 21px; line-height: 1.38; letter-spacing: 0.011em; text-align: left; }
-  .dots { display: flex; justify-content: center; gap: 7px; margin-top: 40px; }
-  .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--color-quiet-dot); }
-  .dots i.on { background: var(--color-primary-ink); }
-
-  /* フッター */
-  footer { background: var(--color-canvas); padding: 40px 0 48px; font-size: 12px; color: var(--color-mid-gray); line-height: 1.33; letter-spacing: -0.12px; }
-  footer .links { display: flex; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
-  footer .links a { color: var(--color-deep-gray); border-bottom: 1px solid var(--color-deep-gray); font-size: 12px; }
-  footer .links a:hover { text-decoration: none; }
-
-  @media (max-width: 900px) {
-    .grid-2, .grid-3, .split { grid-template-columns: 1fr; }
-    .swatches { grid-template-columns: repeat(2, 1fr); }
-    .container { padding: 0 24px; }
-    .band { padding: 80px 0; }
-    .hero { padding: 80px 0 64px; }
-    .hero-visual { height: 280px; padding: 24px; }
-    .nav ul { gap: 16px; }
-    .nav ul li:nth-child(n+4) { display: none; }
-    .comp { grid-template-columns: 1fr; }
-    .comp .score { text-align: left; }
-    .btn-ghost { margin-left: 0; margin-top: 12px; }
+  /* 動き */
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+  .big > span { display: inline-block; animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .big .b-x { animation-delay: .25s; } .big .b-hu { animation-delay: .4s; }
+  .hero-map path { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.6s .7s cubic-bezier(.6,0,.2,1) forwards; }
+  .hero-map rect, .hero-map text { animation: pop .5s 2.1s both; }
+  .train { position: absolute; z-index: 3; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 15px; box-shadow: 0 0 0 5px #fff; left: calc(88px + (var(--x-ai) + var(--x-hu)) / 2 - 17px); top: 0; transition: top .15s linear; pointer-events: none; }
+  .stop.passed.ai .dot::before { background: var(--ai); }
+  .stop.passed.hu .dot::before { background: var(--hu); }
+  .stop.passed.both .dot::before { background: var(--ink); }
+  .stop .card { transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s; }
+  .js .stop:not(.seen) .card { opacity: 0; transform: translateX(16px); }
+  @media (max-width: 640px) { .train { left: calc(58px + (var(--x-ai) + var(--x-hu)) / 2 - 14px); width: 28px; height: 28px; font-size: 12px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .big > span, .hero-map path, .hero-map rect, .hero-map text { animation: none; stroke-dashoffset: 0; }
+    .js .stop:not(.seen) .card { opacity: 1; transform: none; }
+    .train { transition: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- ===== ナビ ===== -->
-<nav class="nav" id="nav">
-  <div class="container">
-    <span class="brand">K.N.</span>
+<nav class="nav" aria-label="ページ内メニュー">
+  <div class="wrap">
+    <a class="me" href="#top">永井 晃太朗</a>
     <ul>
-      <li><a href="#about">自己紹介</a></li>
-      <li><a href="#awards">実績</a></li>
-      <li><a href="#skills">スキル</a></li>
-      <li><a href="#projects">つくったもの</a></li>
-      <li><a href="#competitions">コンペ実績</a></li>
-      <li><a href="#goal">目標</a></li>
-      <li><a href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a></li>
+      <li class="opt"><a href="#story">Story</a></li>
+      <li class="opt"><a href="#about">About</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#memo">Memo</a></li>
+      <li class="opt"><a href="#skills">Skills</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ===== ヒーロー ===== -->
-<header class="hero">
-  <div class="container">
-    <span class="badge-new">金沢工業大学 1年</span>
-    <p class="eyebrow">K.N.</p>
-    <h1 class="display">データで、<br>勝ちにいく。</h1>
-    <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub を見る</a>
-    <a class="btn-ghost" href="#projects">つくったものを見る</a>
-    <p class="price">AI 時代だからこそ、人と人のつながりを大切に。データと AI で、目の前の課題を解いています。</p>
-
-    <div class="hero-visual" aria-hidden="true">
-      <div class="glow"></div>
-<pre class="code">import lightgbm as lgb
-
-for seed in range(5):
-    model = lgb.LGBMClassifier(random_state=seed)
-    model.fit(X_train, y_train)
-    oof[valid_idx] += model.predict_proba(X_valid)[:, 1] / 5
-
-print(f"CV F1: {f1_score(y, oof > 0.5):.3f}")  # 0.734</pre>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="who">
+      <div class="face" aria-label="写真（準備中）">永井</div>
+      <div><p class="name">永井 晃太朗</p><p class="name-en">NAGAI KOTARO　金沢工業大学 知能情報システム学科 1年</p></div>
+    </div>
+    <h1 class="big"><span class="b-ai">AI</span><span class="b-x">×</span><span class="b-hu">人間力</span></h1>
+    <div class="hero-row">
+      <div>
+        <p class="lead">AI時代だからこそ、人と人のつながりを大切に。<br>AIの力と人間力で、AI格差のない岐阜をつくる。</p>
+        <p class="about-line">岐阜県出身。データとAIの力と、人と信頼をつくる力。この2本の路線で走っています。</p>
+        <div class="links">
+          <a class="btn solid" href="#roadmap">ロードマップを見る</a>
+          <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <svg class="hero-map" viewBox="0 0 420 300" role="img" aria-label="AIと人間力の2本の線が、金沢から岐阜へ向かって走る路線図">
+      <path d="M30 60 H170 C210 60 210 110 250 110 H330" fill="none" stroke="#2E5BFF" stroke-width="10" stroke-linecap="round"/>
+      <path d="M30 130 H120 C160 130 160 150 200 150 H250 C280 150 290 130 330 130" fill="none" stroke="#12A06A" stroke-width="10" stroke-linecap="round"/>
+      <path d="M330 110 C370 110 370 200 360 230" fill="none" stroke="#2E5BFF" stroke-width="10" stroke-linecap="round" stroke-dasharray="14 10"/>
+      <path d="M330 130 C350 130 352 200 342 230" fill="none" stroke="#12A06A" stroke-width="10" stroke-linecap="round" stroke-dasharray="14 10"/>
+      <circle cx="30" cy="60" r="11" fill="#fff" stroke="#2E5BFF" stroke-width="6"/>
+      <circle cx="30" cy="130" r="11" fill="#fff" stroke="#12A06A" stroke-width="6"/>
+      <rect x="236" y="96" width="28" height="68" rx="14" fill="#fff" stroke="#18202B" stroke-width="5"/>
+      <rect x="306" y="236" width="80" height="44" rx="22" fill="#18202B"/>
+      <text x="346" y="265" text-anchor="middle" font-family="Zen Kaku Gothic New, sans-serif" font-weight="900" font-size="18" fill="#fff">岐阜</text>
+      <text x="44" y="38" font-family="Zen Kaku Gothic New, sans-serif" font-weight="700" font-size="15" fill="#2E5BFF">AI</text>
+      <text x="44" y="166" font-family="Zen Kaku Gothic New, sans-serif" font-weight="700" font-size="15" fill="#12A06A">人間力</text>
+      <text x="250" y="190" text-anchor="middle" font-family="Zen Kaku Gothic New, sans-serif" font-size="13" fill="#5B6575">合流</text>
+    </svg>
     </div>
   </div>
 </header>
 
-<!-- ===== 自己紹介(グレー帯) ===== -->
-<section class="band gray" id="about">
-  <div class="container">
-    <h2 class="section-title">自己紹介。</h2>
-    <p class="section-lead">岐阜県出身。3 歳から野球を続け、高校ではけがをきっかけにチームのデータアナリストを務めました。いまは「AI × 人間力」を軸に、コンペ・ハッカソン・研究室体験に取り組んでいます。</p>
+<main>
 
-    <div class="split">
-      <div class="card">
-        <h3 class="big">数字と信頼で、<br>チームを動かす。</h3>
-        <p>高校野球部で対戦相手の映像を分析し、対策を提案していました。分析が受け入れられたのは、具体的な数字の根拠と、毎日の努力を見てもらえていたから。数字だけでも、努力だけでもチームは動かない。その経験が原点です。</p>
-        <p>大学では機械学習コンペやハッカソンの PM、母校の野球部と連携したデータ活用に取り組んでいます。第一言語は Python です。</p>
-        <a class="arrow" href="#projects">つくったものを見る</a>
+<section class="block" id="story">
+  <div class="wrap">
+    <h2>Story</h2>
+    <p class="intro">3歳でバットを握ってから大学に入るまで。いまの自分をつくった出来事を、時代ごとに書きました。</p>
+
+    <div class="chapters">
+      <article class="chapter">
+        <div class="ch-age"><span class="ch-num">3</span>歳〜</div>
+        <div class="ch-body">
+          <h3>父の影響で、野球を始める</h3>
+          <p>中日ドラゴンズの応援団をしていた父の影響で、3歳から野球を始めました。いまも生粋の中日ファンで、毎日試合を見ています。</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="ch-age">小学校</div>
+        <div class="ch-body">
+          <h3>上級生の試合にも出ていた少年時代</h3>
+          <p>坊主頭で、運動はいつも得意でした。上級生の試合にも出させてもらい、正直、少し天狗になっていた時期もあります。走る練習がきつすぎて倒れ、おんぶされたこともありました。</p>
+          <p>一人で泣いていたとき、母が泣きながら「私はこうちゃんのみかただから」と言ってくれたことを、今でも覚えています。</p>
+          <p>小6の誕生日には、中学の監督がわざわざ小学校まで来てスカウトしてくれました。硬式のクラブチームか中学の軟式野球部かで迷いましたが、同級生にたくさん「ながいがクラブに行くなら俺はやめる」と言われ、この仲間と楽しくやろうと軟式を選びました。</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="ch-age">中学校</div>
+        <div class="ch-body">
+          <h3>岐阜県選抜、あと3アウトで全国</h3>
+          <p>勝ち負けでいえば負ける方が多かったけれど、仲間と過ごした最高の3年間でした。中3で岐阜県の中学選抜に選ばれ、あと3アウトで全国大会というところでサヨナラ負け。この悔しさが、高校で甲子園を目指すきっかけになりました。</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="ch-age">高校</div>
+        <div class="ch-body">
+          <h3>天国と地獄を経験した、関商工での3年間</h3>
+          <p>甲子園に1回しか出たことのない公立校で、強豪を倒して甲子園に行きたい。そう思って「みんなでその高校に行こう」と声をかけ、県選抜の主力5〜6人で関商工に進みました。</p>
+          <p>部員は3学年で90人以上。A・B・Cチームの境界線がはっきりある中で、すべてのチームを経験しました。Cチームでは雑用をしながらチームの役に立つ方法を考え、Aチームでは支えてくれる仲間に感謝を言葉で伝えることを意識しました。同級生全員と話せる関係をつくれたのは、このころです。</p>
+          <p>1年の冬に体重を5kg増やし、春の大会で背番号5をもらいました。ところが張り切りすぎて大会前にけが。チームに迷惑をかけると思い、自分から申告してメンバーを外れました。</p>
+          <p>そこから約1年、選手としてプレーできない時間が続きます。何かでチームに貢献したいと監督に相談し、データアナリストになりました。朝から晩まで対戦相手の映像を見て分析し、大会前のミーティングで対策を発表。最後は大会期間中の練習メニューを任されるまでになりました。2年のときには、名将・阪口慶三さんが関商工に来られ、たくさん話を聞くことができました。</p>
+          <p>3年の春に復帰してからは、毎朝6時に起きて友達と朝練。最後の夏、初めてベンチ入りをつかみ、県ベスト4まで進みました。負けた瞬間に一番に浮かんだのは、毎日のお弁当や送迎、弟と妹の時間まで使って支えてくれた家族への感謝でした。</p>
+          <blockquote>当たり前のことを、どれだけ当たり前にやるかが成功する道。<cite>高校の監督の言葉</cite></blockquote>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="ch-age">大学</div>
+        <div class="ch-body">
+          <h3>データから結論を出す人になりたくて</h3>
+          <p>高校の監督の紹介で金沢工業大学を知り、オープンスクールで入学を決めました。データ分析の経験から「データで考えて結論を出したい」と思い、これからはAIを使える人が必要になると感じて、知能情報システム学科を選びました。ここから先は、下のロードマップに続きます。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div>
+        <p><strong>モットーは「とにかく、やりたいことを行動する」。</strong>やってみないとわからないことがあると思い、ハッカソン、インターン、学外の講座に飛び込んでいます。ハッカソンでは一度も同じ人と組んだことがありません。人によって考え方や進め方が違うことを知るのが、自分にとっての価値だからです。</p>
+        <p><strong>強みは、対話から答えをつくること。</strong>0から課題を見つけるより、すでにある課題に解決策を出すのが得意です。スターバックスの接客でも、アプリづくりでも、相手の声を聞いて直すことを一番大事にしています。</p>
+        <p><strong>感謝は、言葉にして伝える。</strong>言葉にしないと気持ちは伝わらない、と高校で学びました。恥ずかしがり屋なので、まだ親にはちゃんと言えていませんが。</p>
+        <p><strong>目指すのは、AI格差のない岐阜。</strong>Gnomatic で地方企業の AI・DX が進んでいない現状を目の当たりにしました。AIを持っていても使いこなせない差は、地方ほど大きい。まずは東京の外資系 IT コンサルでいちばん成長できる環境に飛び込み、いろいろな業界の人と関わって知見を積みます。その後は岐阜で起業し、みんなが安心してAIを使える地域をつくりたいと考えています。</p>
       </div>
-      <div class="swatches" aria-label="興味のある分野">
-        <div class="swatch" style="background: var(--color-citrus)">機械学習</div>
-        <div class="swatch" style="background: var(--color-sky)">データ分析</div>
-        <div class="swatch" style="background: var(--color-starlight)">自動化ツール</div>
-        <div class="swatch" style="background: var(--color-blush)">野球</div>
-        <div class="swatch dark" style="background: var(--color-indigo)">Python</div>
-        <div class="swatch" style="background: var(--color-silver)">Web</div>
-        <div class="swatch dark" style="background: var(--color-midnight)">Kaggle</div>
-        <div class="swatch" style="background: var(--color-cool-wash)">LINE Bot</div>
+      <ul class="facts">
+        <li><span>所属</span><span>金沢工業大学 情報理工学部 知能情報システム学科 1年</span></li>
+        <li><span>出身</span><span>岐阜県（関商工高校 野球部）</span></li>
+        <li><span>野球歴</span><span>3歳〜。中学で岐阜県選抜、高校で県ベスト4</span></li>
+        <li><span>研究室体験</span><span>山本研究室（2026年10月〜）</span></li>
+        <li><span>課外活動</span><span>Data Dreamers、Developers Hub、情報セキュリティ・スキルアッププロジェクト、Gnomatic</span></li>
+        <li><span>好きなもの</span><span>中日ドラゴンズ、ONE OK ROCK（ライブ5回）</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="roadmap">
+  <div class="wrap">
+    <h2>Roadmap</h2>
+    <p class="intro">青がAIの路線、緑が人間力の路線です。2本が重なる駅は、両方の力を使った活動。今日から先は点線で、これからの予定を描いています。</p>
+
+    <div class="legend" role="group" aria-label="路線で絞り込む">
+      <button class="chip" data-filter="all" aria-pressed="true">すべての駅</button>
+      <button class="chip" data-filter="ai" aria-pressed="false"><i class="i-ai"></i>AI</button>
+      <button class="chip" data-filter="hu" aria-pressed="false"><i class="i-hu"></i>人間力</button>
+    </div>
+    <p class="legend-note">黒い枠の長い駅は、AIと人間力の乗り換え駅です。</p>
+
+    <div class="route">
+      <div class="train" aria-hidden="true">●</div>
+      <ol>
+        <li class="stop both big"><div class="when">〜2026</div><div class="dot"></div><div class="card"><h3>出発点：高校野球部のデータアナリスト</h3><p>けがでプレーできなかった約1年、対戦相手の分析を担当。データの力と、信頼される力の両方を知った（<a class="ext" href="#story">Story</a>）。</p></div></li>
+        <li class="stop both"><div class="when">2026.04</div><div class="dot"></div><div class="card"><h3>金沢工業大学に入学</h3><p>AIを学ぶために、情報理工学部 知能情報システム学科へ。</p></div></li>
+        <li class="stop hu"><div class="when">2026.05</div><div class="dot"></div><div class="card"><h3>学生ステーションの学生スタッフ</h3><p>学内インターンシップとして、学生からの質問対応や落とし物管理を担当。現場の声から、スタッフ用のシフト管理アプリづくりが始まった。</p></div></li>
+        <li class="stop both"><div class="when">2026.07</div><div class="dot"></div><div class="card"><h3>プロジェクトデザイン入門で学長表彰</h3><p>6人チームで「文章を書く時間帯で内容は変わるか」を形態素解析で検証。最終発表会でチームが選ばれた。</p><span class="award">学長表彰</span></div></li>
+        <li class="stop ai"><div class="when">2026.06</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-datadreamers.png" alt="">夢考房 Data Dreamers に参加</h3><p>機械学習コンペに挑戦。毎週月曜に進捗を発表し、先輩から助言をもらって改善を続けている。</p></div></li>
+        <li class="stop ai"><div class="when">2026.06–08</div><div class="dot"></div><div class="card"><h3>東京大学 松尾・岩澤研究室の講座</h3><p>大規模言語モデル、フィジカルAI、深層学習、GCIベーシックの4講座を受講。</p></div></li>
+        <li class="stop hu"><div class="when">2026.07</div><div class="dot"></div><div class="card"><h3>スターバックスでアルバイト</h3><p>お客様一人ひとりが満足して帰れる接客を意識。対話から満足をつくる姿勢は、アプリづくりでも一番大事にしている。</p></div></li>
+        <li class="stop both"><div class="when">2026.08</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-hackit.png" alt="">Hackit2026 に運営と出場の両方で参加</h3><p>初めてのハッカソン。アイデア出しの難しさと、チームで形にする面白さを知った。</p></div></li>
+        <li class="stop ai"><div class="when">2026.08</div><div class="dot"></div><div class="card"><h3>夏期集中講座で AI を集中的に学ぶ</h3><p>AIプログラミング入門、AI応用Ⅱ（自然言語処理）、情報ネットワーク基礎、ビジネス思考法入門。数理リテラシー特別講座も2つ修了。</p></div></li>
+        <li class="stop both big"><div class="when">2026.09</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-tornado.png" alt="">Tornado2026 で企業賞</h3><p>6人チームのPMとして、地域の困りごとと大学生をつなぐ「fitt0」を企画。良いものを作るだけでなく、お金になる形にして初めて価値が届くと学んだ。<a class="ext" href="https://www.youtube.com/watch?v=nB_QOWTI4G8" target="_blank" rel="noopener">紹介動画</a></p><span class="award">企業賞</span></div></li>
+        <li class="stop hu"><div class="when">2026.09</div><div class="dot"></div><div class="card"><h3>学長褒賞（学業）</h3><p>教育補助員を含めた学び合いを進め、学力向上に貢献したことで推薦をいただいた。</p><span class="award">学長褒賞</span></div></li>
+        <li class="stop ai"><div class="when">2026.09</div><div class="dot"></div><div class="card"><h3>BitGrit のコンペで 223人中 9位</h3><p>上位4%。LightGBM を中心に、特徴量とパラメータの調整を重ねた。</p></div></li>
+        <li class="stop both"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-gnomatic.png" alt="">Gnomatic で石川県の AI・DX 推進</h3><p>学部4年の先輩たちと、企業との面談で課題を聞き、IT で価値を返す活動を始めた。都市ではない地域ほど AI・DX が遅れていると感じた。</p></div></li>
+        <li class="stop ai"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3>山本研究室の研究室体験</h3><p>母校の野球部と連携し、測定会のデータを見える化するアプリを開発中。研究テーマは「高校野球選手の冬季トレーニングと体組成」。</p></div></li>
+        <li class="stop ai"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-jphacks.png" alt="">JPHACKS 2026 に出場</h3><p>旅行の行き先を地図から選べる Web アプリ「<a class="ext" href="https://kz-2609.vercel.app/" target="_blank" rel="noopener">旅行どこいこう</a>」を開発。</p></div></li>
+        <li class="stop hu"><div class="when">2026.10</div><div class="dot"></div><div class="card"><h3>100km 歩行を完歩</h3><p>寝る間もなく足が限界になる中、仲間と助け合って歩き切った。</p></div></li>
+        <li class="stop hu"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3>Developers Hub でスポンサーを獲得</h3><p>2027年9月の北陸ITカンファレンスに向けて、スポンサーチームとして企業との面談を重ねた。</p></div></li>
+        <li class="stop ai"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-laime.png" alt="">LAIME Kaggle Dojo 第3期生</h3><p>Kaggle Grandmaster・Master の指導のもと、メダル獲得を目指す半年間のプログラム。</p></div></li>
+        <li class="stop ai"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3><img src="assets/logo-devfest.png" alt="">DevFest GDGoC Japan Hackathon 2026</h3><p>Google Cloud と Gemini を使ったプロダクト開発に挑戦中。</p></div></li>
+      <li class="stop both big"><div class="when">2026.11</div><div class="dot"></div><div class="card"><h3>シフト管理アプリを iOS アプリに</h3><p>学生ステーションのシフト管理アプリを iOS 化。自分と先輩のスマホにビルドし、実際の業務で使い始めた。次の目標は App Store での公開。</p></div></li></ol>
+
+      <div class="now"><div class="when">TODAY</div><div class="bar"><span>現在地　2026年11月</span></div></div>
+
+      <ol class="future">
+        <li class="stop hu"><div class="when">2026.12</div><div class="dot"></div><div class="card"><h3>東京の技術カンファレンス 1回目</h3><p>ABEMA Developer Conference に参加。2年生になるまでに2回参加し、学んだ技術が社会でどう使われているかを知る。</p></div></li>
+        <li class="stop both big"><div class="when">2026.12</div><div class="dot"></div><div class="card"><h3>シフト管理アプリを App Store で公開</h3><p>12月中に公開。スタッフ用の画面に加えて、シフトを組む人のための管理者画面もそろえる。</p></div></li>
+        <li class="stop hu"><div class="when">2027.01–02</div><div class="dot"></div><div class="card"><h3>学ステの1〜4年生で試験運用</h3><p>実際に使ってもらい、あったらいい機能や直してほしい点を聞いて改善する。3月に仕上げ、4月からの本番に備える。</p></div></li>
+        <li class="stop both"><div class="when">2027.春</div><div class="dot"></div><div class="card"><h3>SRIワークショップ（英語）と TOEIC 初受験</h3><p>話す英語を身につけ、TOEIC で今の実力を数字で知る。東京の技術カンファレンス2回目にも参加する。</p></div></li>
+        <li class="stop ai big"><div class="when">2027.03</div><div class="dot"></div><div class="card"><h3>Kaggle 銅メダル 1枚</h3><p>LAIME Kaggle Dojo のメンターの力を借りて、コンペを広く浅くではなく一つに集中する。1年生のうちに初メダル。</p></div></li>
+        <li class="stop both big"><div class="when">2027.04</div><div class="dot"></div><div class="card"><h3>シフト管理アプリの完全運用</h3><p>2年生のスタートと同時に、学生ステーションのスタッフ約50人が毎日使うシフト管理の仕組みにする。</p></div></li>
+        <li class="stop both big"><div class="when">2027.夏</div><div class="dot"></div><div class="card"><h3>コーオプ教育で NEC へ</h3><p>2年生の夏、企業の現場で働く。Data Dreamers の創設者の先輩が、NEC のコーオプ教育で多くを学んだ話がきっかけ。</p></div></li>
+        <li class="stop hu"><div class="when">2027.09</div><div class="dot"></div><div class="card"><h3>北陸ITカンファレンス 開催</h3><p>Developers Hub の一員として、学生・エンジニア・企業がつながる場をつくる。</p></div></li>
+        <li class="stop ai"><div class="when">2年生</div><div class="dot"></div><div class="card"><h3>Kaggle 銀メダル 2枚</h3><p>一つのコンペに集中する進め方を続け、銀メダルを2枚取る。</p></div></li>
+        <li class="stop hu big"><div class="when">3年生</div><div class="dot"></div><div class="card"><h3>Data Dreamers のプロジェクトリーダーに</h3><p>100人以上が所属する学内最大のプロジェクトで、成果を出し、人を引っ張る。</p></div></li>
+        <li class="stop both"><div class="when">3年 夏</div><div class="dot"></div><div class="card"><h3>海外の技術カンファレンスと IT コンサルのインターン</h3><p>AWS、Google、NVIDIA などの海外カンファレンスに一度は参加する。アクセンチュアなど、IT コンサルの夏のインターンに挑戦する。</p></div></li>
+        <li class="stop ai big"><div class="when">3年生</div><div class="dot"></div><div class="card"><h3>Kaggle 金メダル、そして Grandmaster へ</h3><p>3年生で金メダルを取り、Kaggle の最高位 Grandmaster を目指す。</p></div></li>
+        <li class="stop ai"><div class="when">大学院</div><div class="dot"></div><div class="card"><h3>金沢工業大学大学院で研究を深める</h3><p>選手一人ひとりに合ったトレーニングを提案できる分析手法を確立する。</p></div></li>
+        <li class="stop both big"><div class="when">就職</div><div class="dot"></div><div class="card"><h3>外資系の IT コンサルタントとして東京で働く</h3><p>結果を正当に評価してもらえる、いちばん成長できる環境で、企業の課題をデータで整理し、対話しながら解決策を提案する。</p></div></li>
+      </ol>
+
+      <div class="terminal">
+        <div class="sign">
+          <div class="plate">岐阜</div>
+          <p>終点：岐阜で起業し、AI格差をなくす<span>AIを使える人と使えない人の差は、地方ほど大きい。東京で鍛えた知見を持ち帰り、コンサルタントとして、みんなが安心してAIを使える岐阜をつくる。</span></p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 実績(白帯) ===== -->
-<section class="band white" id="awards">
-  <div class="container">
-    <h2 class="section-title">1 年目の実績。</h2>
-    <p class="section-lead">2026 年 4 月の入学から、チームと一緒に積み上げてきたもの。</p>
+<section class="block" id="works">
+  <div class="wrap">
+    <h2>Works</h2>
+    <p class="intro">ロードマップの中から、特に力を入れた取り組みです。</p>
 
-    <div class="grid-3">
-      <div class="card">
-        <span class="badge-new">2026.09</span>
-        <h3>Tornado2026 企業賞</h3>
-        <p>学生向け実践型ハッカソン。6 人チームの PM として、地域の困りごとと大学生をつなぐサービス「fitt0」を企画しました。</p>
-      </div>
-      <div class="card">
-        <span class="badge-new">2026 前学期</span>
-        <h3>学長表彰</h3>
-        <p>プロジェクトデザイン入門。「文章を書く時間帯で内容は変わるか」を形態素解析で検証し、最終発表会でチームが選ばれました。</p>
-      </div>
-      <div class="card">
-        <span class="badge-new">2026.09</span>
-        <h3>学長褒賞(学業)</h3>
-        <p>教育補助員を含めた学び合いを進め、学力向上に貢献したことで推薦をいただきました。</p>
-      </div>
-    </div>
-
-    <div class="grid-3" style="margin-top: 20px;">
-      <div class="card"><div class="stat">9<span style="font-size:24px;"> / 223</span></div><div class="stat-label">BitGrit コンペ順位(上位 4%)</div></div>
-      <div class="card"><div class="stat">上位10%</div><div class="stat-label">正課学修ポイント(1 年前学期)</div></div>
-      <div class="card"><div class="stat">100km</div><div class="stat-label">100km 歩行 完歩</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== スキル(グレー帯) ===== -->
-<section class="band gray" id="skills">
-  <div class="container">
-    <h2 class="section-title">できること。</h2>
-    <p class="section-lead">得意なのはテーブルデータの機械学習。必要に応じて Web やスクリプトも書きます。</p>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3>機械学習</h3>
-        <p>勾配ブースティングを軸に、交差検証を固定して「1 実験 = 1 変更」で改善を積み上げるスタイル。</p>
-        <div class="chips">
-          <span class="chip">LightGBM</span><span class="chip">CatBoost</span><span class="chip">XGBoost</span>
-          <span class="chip">DeBERTa</span><span class="chip">スタッキング</span><span class="chip">RAG</span>
+    <article class="feature">
+      <div class="feature-text">
+        <span class="tag">学生ステーション・現在開発中</span>
+        <h3>学生ステーションのシフト管理アプリ</h3>
+        <p>学生スタッフとして働く中で、シフトの確認と調整に手間がかかっていることに気づき、自分でアプリを作りました。最初は Web アプリとして作り、いまは iOS アプリにして、自分と先輩のスマホで実際の業務に使っています。</p>
+        <dl>
+          <dt>いまの状況</dt><dd>自分と先輩のスマホにビルドして、実際の業務で使っている</dd>
+          <dt>機能</dt><dd>スタッフ用のシフト確認画面と、シフトを組む人のための管理者画面</dd>
+          <dt>大事にしたこと</dt><dd>使う人の声を聞いて直すこと。スターバックスの接客と同じで、対話から満足をつくる。</dd>
+          <dt>次の目標</dt><dd>2026年12月に App Store で公開。1〜2月に1〜4年生で試験運用して改善し、2027年4月からスタッフ約50人で本格運用する。</dd>
+        </dl>
+        <div class="links">
+          <span class="btn soon">App Store　公開準備中</span>
         </div>
       </div>
-      <div class="card">
-        <h3>Python</h3>
-        <p>データ処理から PDF・Excel 生成、シミュレーション評価まで。パッケージ管理は uv。</p>
-        <div class="chips">
-          <span class="chip">pandas</span><span class="chip">scikit-learn</span><span class="chip">reportlab</span>
-          <span class="chip">openpyxl</span><span class="chip">Pillow</span><span class="chip">uv</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Web・ツール</h3>
-        <p>単一ファイルの HTML ツールや、Node.js の Webhook サーバーも作ります。</p>
-        <div class="chips">
-          <span class="chip">HTML / CSS / JS</span><span class="chip">Node.js</span><span class="chip">LINE Messaging API</span>
-          <span class="chip">Git / GitHub</span><span class="chip">Google Colab</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="feature-shot" aria-label="アプリの画面（スクリーンショット準備中）"><span>アプリの画面<br>スクリーンショット準備中</span></div>
+    </article>
 
-<!-- ===== つくったもの(白帯) ===== -->
-<section class="band white" id="projects">
-  <div class="container">
-    <h2 class="section-title">つくったもの。</h2>
-    <p class="section-lead">どれも「自分か、身近な誰かが実際に使う」ことを前提に作っています。</p>
-
-    <div class="grid-2" style="margin-bottom: 20px;">
-      <div class="card hack">
-        <img src="assets/logo-hackit.png" alt="Hackit のロゴ" width="64" height="64">
-        <div><h3><a class="ext" href="https://hackit-2026.vercel.app/" target="_blank" rel="noopener">Hackit2026</a></h3><p>運営と出場の両方を経験(2026.08)</p></div>
-      </div>
-      <div class="card hack">
-        <img src="assets/logo-tornado.png" alt="Tornado2026 のロゴ" width="64" height="64">
-        <div><h3><a class="ext" href="https://2026.tornado-official.jp/" target="_blank" rel="noopener">Tornado2026</a></h3><p>PM として企業賞(2026.09)</p></div>
-      </div>
-      <div class="card hack">
-        <img src="assets/logo-jphacks.png" alt="JPHACKS のロゴ" width="64" height="64">
-        <div><h3><a class="ext" href="https://jphacks.com/" target="_blank" rel="noopener">JPHACKS 2026</a></h3><p>金沢会場で出場(2026.10)</p></div>
-      </div>
-      <div class="card hack">
-        <img src="assets/logo-devfest.png" alt="DevFest 2026 のロゴ" width="64" height="64">
-        <div><h3><a class="ext" href="https://df-hack26.gdgs.jp/" target="_blank" rel="noopener">DevFest GDGoC Japan Hackathon 2026</a></h3><p>出場中(2026.11)</p></div>
-      </div>
-    </div>
-
-    <div class="card hack" style="margin-bottom: 20px;">
-      <img src="assets/logo-gnomatic.png" alt="Gnomatic のロゴ" width="64" height="64">
-      <div><h3>Gnomatic</h3><p>学部 4 年の先輩たちと、石川県の企業の AI・DX 推進に取り組んでいます。企業との面談で課題を聞き、IT で価値を返す活動です(2026.10〜)。</p></div>
-    </div>
-
-    <div class="card hack" style="margin-bottom: 20px;">
-      <div><h3><a class="ext" href="https://developershub.jp/" target="_blank" rel="noopener">Developers Hub</a>(北陸 IT カンファレンス)</h3><p>学生が主体の一般社団法人。2027 年 9 月開催予定の北陸 IT カンファレンスに向けて、スポンサーチームとして企業との面談を重ね、スポンサーを獲得しました(2026〜)。</p></div>
-    </div>
-
-    <div class="card" style="margin-bottom: 20px;">
-      <div class="split">
-        <div>
-          <span class="badge-new">企業賞</span>
-          <h3 class="big">fitt0(Tornado2026)</h3>
-          <p>地域住民の小さな困りごとと、助けたい大学生をつなぐマッチングサービス。AI が依頼内容を整理し、活動の実績を言葉にして残します。PM として PRD・発表資料・質疑応答の準備をまとめ、3 週間のオンライン開発を進めました。</p>
-          <div class="chips"><span class="chip">PM</span><span class="chip">PRD</span><span class="chip">生成 AI</span></div>
-        </div>
-        <div class="grid-2">
-          <div><div class="stat">6</div><div class="stat-label">チームの人数</div></div>
-          <div><div class="stat">3週</div><div class="stat-label">オンライン開発期間</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid-2" style="margin-bottom: 20px;">
-      <div class="card">
+    <div class="works">
+      <article class="work">
+        <span class="tag">Tornado2026・企業賞・PM</span>
+        <h3>fitt0</h3>
+        <p>地域住民の小さな困りごとと、助けたい大学生をつなぐマッチングサービス。AI が依頼内容を整理し、活動の実績を言葉にして残す。</p>
+        <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=nB_QOWTI4G8" target="_blank" rel="noopener">紹介動画を見る（YouTube）</a></div>
+        <details>
+          <summary>詳しく読む</summary>
+          <dl>
+            <dt>自分の役割</dt><dd>6人チームのPM。進捗報告会の設計、PRD、発表資料、質疑応答の準備をまとめた。</dd>
+            <dt>工夫したこと</dt><dd>アイデア出しでは付箋で日常の困りごとを30〜40個集め、ジャンル分けして解決できる課題を選んだ。一人ひとりの得意を生かす分担を意識した。</dd>
+            <dt>学んだこと</dt><dd>審査員は経営の視点を持つ人が多く、「どうすればお金になるか」を問われた。良いものを作るだけでは価値は届かない。</dd>
+          </dl>
+        </details>
+      </article>
+      <article class="work">
+        <span class="tag">研究室体験・山本研究室</span>
         <h3>母校の野球部とのデータ活用</h3>
-        <p>研究室体験で、母校の高校野球部と連携。測定会のデータを取っても見える化できなかった、自分が選手だったころの課題を、アプリで解こうとしています。</p>
-        <div class="chips"><span class="chip">研究室体験</span><span class="chip">iOS</span><span class="chip">データ可視化</span></div>
-      </div>
-      <div class="card">
-        <h3>旅行どこいこう(JPHACKS)</h3>
-        <p>旅行の行き先を地図から選んで計画できる Web アプリ。石川・東京・大阪・京都のスポットを登録しています。</p>
-        <div class="chips"><span class="chip">Web</span><span class="chip">地図</span><span class="chip">Vercel</span></div>
-      </div>
-    </div>
-
-    <div class="card" style="margin-bottom: 20px;">
-      <div class="split">
-        <div>
-          <span class="badge-new">New</span>
-          <h3 class="big">Kaggriculture 農場エージェント</h3>
-          <p>Kaggle の農場シミュレーション対戦コンペ向け AI エージェント。メロンで序盤に資金を稼ぎ、家畜と作物に分散投資する経済戦略を、標準ライブラリだけの単一ファイルで実装。ローカル対戦シミュレータとパラメータ探索ツールも自作しました。</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">kaggle-environments</span><span class="chip">シミュレーション</span></div>
-        </div>
-        <div class="grid-2">
-          <div><div class="stat">89.5k</div><div class="stat-label">対 starter 平均スコア(10 seed)</div></div>
-          <div><div class="stat">v9</div><div class="stat-label">改善を重ねたバージョン数</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <h3>野球部 LINE 公式アカウント Bot</h3>
-        <p>大会ごとに乱立していたグループ LINE を 1 つの公式アカウントに集約。リッチメニュー 4 タブから大会メンバー・試合日程・練習日程・連絡を登録/閲覧でき、編集は管理者のみ。毎朝 7 時の予定通知にも対応。</p>
-        <div class="chips"><span class="chip">Node.js</span><span class="chip">LINE Messaging API</span><span class="chip">Pillow</span></div>
-      </div>
-      <div class="card">
-        <h3>週次課題オートメーション</h3>
-        <p>毎週提出する「行動履歴」と「生活習慣自己管理表」を半自動化。ブラウザの入力フォームから JSON を書き出し、Python で提出用 PDF(A4 横)と Excel を自動生成します。</p>
-        <div class="chips"><span class="chip">HTML</span><span class="chip">reportlab</span><span class="chip">openpyxl</span></div>
-      </div>
+        <p>測定会でデータを取っても見える化できなかった、自分が選手だったころの課題を、アプリと研究で解こうとしている。</p>
+        <details>
+          <summary>詳しく読む</summary>
+          <dl>
+            <dt>背景</dt><dd>高校1年の冬のトレーニングで体重を増やしたことがレギュラー獲得につながった。その効果をデータで確かめたい。</dd>
+            <dt>いま取り組んでいること</dt><dd>母校の野球部と連携したミーティングを行い、測定データを見える化するアプリを開発している。</dd>
+            <dt>これから</dt><dd>データの収集と分析を進め、研究成果として発表する。</dd>
+          </dl>
+        </details>
+      </article>
+      <article class="work">
+        <span class="tag">プロジェクトデザイン入門・学長表彰</span>
+        <h3>文章を書く時間帯で、内容は変わる？</h3>
+        <p>朝・夜・深夜に書いた感想文を形態素解析し、言葉の傾向を比べた6人チームの研究。</p>
+        <details>
+          <summary>詳しく読む</summary>
+          <dl>
+            <dt>やったこと</dt><dd>論文をもとに仮説を立て、Google Colab と Janome で感想文を形態素解析。1000文字あたりの出現頻度で比べた。</dd>
+            <dt>結果</dt><dd>朝は客観的、夜は感情的、深夜は哲学的な語が多いという、仮説どおりの傾向が見られた。</dd>
+            <dt>学んだこと</dt><dd>サンプル数や単語リストの妥当性など、分析の限界まで考えることの大切さ。</dd>
+          </dl>
+        </details>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ===== コンペ実績(グレー帯) ===== -->
-<section class="band gray" id="competitions">
-  <div class="container">
-    <h2 class="section-title">コンペ実績。</h2>
-    <p class="section-lead">2026 年時点で参加したデータ分析コンペ。すべての実験を記録して、再現できる形で残しています。</p>
-
-    <div class="card hack" style="margin-bottom: 20px; background: var(--color-paper);">
-      <img src="assets/logo-datadreamers.png" alt="Data Dreamers のロゴ" width="64" height="64">
-      <div><h3><a class="ext" href="https://www.kanazawa-it.ac.jp/kitnews/2023/1220_datadreamers.html" target="_blank" rel="noopener">夢考房 Data Dreamers</a></h3><p>学内最大のデータサイエンスプロジェクト。毎週月曜に進捗を発表し、先輩から助言をもらいながらコンペに挑戦しています(2026.06〜)。</p></div>
-    </div>
-
-    <div class="comp">
-      <div>
-        <h3 class="name">SIGNATE Student Cup 2026</h3>
-        <p class="desc">テーブル + 日本語テキストの分類。LightGBM / CatBoost / XGBoost を 5 seed ずつ学習してアンサンブル。</p>
-      </div>
-      <div class="score">0.734<span>CV F1(LB 0.706)</span></div>
-    </div>
-    <div class="comp">
-      <div>
-        <h3 class="name">BitGrit 危険発話検出</h3>
-        <p class="desc">DeBERTa など 7 種のモデル × 4 seed × 5 fold に、言語モデルの困惑度を特徴量として加えてスタッキング。</p>
-      </div>
-      <div class="score">9 位<span>223 人中(上位 4%)</span></div>
-    </div>
-    <div class="comp">
-      <div>
-        <h3 class="name">SIGNATE NTT RAG コンペ</h3>
-        <p class="desc">文書の書式情報を残した抽出と BM25 検索を組み合わせ、Gemini で回答を生成する RAG(検索拡張生成)パイプライン。</p>
-      </div>
-      <div class="score">RAG<span>検索 + 生成</span></div>
-    </div>
-    <div class="comp">
-      <div>
-        <h3 class="name">Kaggle Kaggriculture</h3>
-        <p class="desc">農場シミュレーションの対戦コンペ。初のメダル挑戦として 2026 年 9 月に提出。</p>
-      </div>
-      <div class="score">2026.09<span>挑戦中</span></div>
+<section class="block" id="memo">
+  <div class="wrap">
+    <h2>Memo</h2>
+    <p class="intro">活動の中で感じたことを、そのときの言葉で残しています。</p>
+    <div class="memos">
+      <div class="memo"><time datetime="2026-11">2026.11</time><p>企業の方から「最先端の開発では、話して伝える力が一番必要」と聞いた。英語を、読む・書くだけでなく話せるようになりたい。<span>PDの英語クラスで、英語の楽しさも感じている。</span></p></div>
+      <div class="memo"><time datetime="2026-11">2026.11</time><p>一次面接ではこれまでの活動を評価してもらえる。でも技術面接では、まだ力が足りない。方向は間違っていないから、早く技術を身につけたい。</p></div>
+      <div class="memo"><time datetime="2026-10">2026.10</time><p>Gnomatic で企業の話を聞いて、都市ではない地域ほど AI・DX が遅れていると感じた。いつか岐阜に持ち帰りたい。</p></div>
+      <div class="memo"><time datetime="2026-10">2026.10</time><p>100km歩行。足が限界でも、仲間と一緒だったから歩き切れた。</p></div>
+      <div class="memo"><time datetime="2026-09">2026.09</time><p>Tornado の審査員に「どうしたらお金になるか」を問われた。どれだけ良いものを作っても、届かなければ意味がない。</p></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 学び(白帯) ===== -->
-<section class="band white" id="learning">
-  <div class="container">
-    <h2 class="section-title">学び続けていること。</h2>
-    <p class="section-lead">授業の外でも、AI を基礎から学んでいます。</p>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3><a class="ext" href="https://weblab.t.u-tokyo.ac.jp/" target="_blank" rel="noopener">東京大学 松尾・岩澤研究室</a>の講座</h3>
-        <p><a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/large-language-model/" target="_blank" rel="noopener">大規模言語モデル(LLM)</a>、<a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/physical-ai/" target="_blank" rel="noopener">フィジカル AI</a>、<a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/deep-learning/" target="_blank" rel="noopener">深層学習(Deep Learning)</a>、<a class="ext" href="https://weblab.t.u-tokyo.ac.jp/lecture/course-list/gci-basic/" target="_blank" rel="noopener">GCI ベーシック</a>の 4 講座を受講。</p>
-        <div class="badges">
-          <img src="assets/badge-llm.png" alt="松尾・岩澤研究室 大規模言語モデル講座のバッジ" width="88" height="88">
-          <img src="assets/badge-pai.png" alt="松尾・岩澤研究室 フィジカル AI 講座のバッジ" width="88" height="88">
-          <img src="assets/badge-gci.png" alt="GCI 2026 Summer BASIC のバッジ" width="88" height="88">
-        </div>
-      </div>
-      <div class="card">
-        <h3>夏期集中・先取り科目</h3>
-        <p>AI プログラミング入門、AI 応用Ⅱ(自然言語処理)、情報ネットワーク基礎、ビジネス思考法入門。後学期は 2 年生の科目を先取りして履修中。</p>
-      </div>
-      <div class="card">
-        <h3><a class="ext" href="https://laime.optal.info/laime-kaggle-dojo3/" target="_blank" rel="noopener">LAIME Kaggle Dojo</a></h3>
-        <p>学生団体 LAIME の Kaggle Dojo に第 3 期生として参加(2026 年 11 月〜)。</p>
-        <div class="badges"><img src="assets/logo-laime.png" alt="LAIME Kaggle Dojo のロゴ" width="88" height="88"></div>
-      </div>
+<section class="block" id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill"><h3>機械学習・データ分析</h3><ul><li>Python</li><li>pandas</li><li>scikit-learn</li><li>LightGBM</li><li>XGBoost</li><li>CatBoost</li><li>Janome</li></ul></div>
+      <div class="skill"><h3>アプリ・Web</h3><ul><li>React</li><li>SwiftUI</li><li>Node.js</li><li>HTML / CSS / JS</li><li>LINE Messaging API</li><li>Vercel</li></ul></div>
+      <div class="skill"><h3>チーム・人</h3><ul><li>PM（Tornado2026）</li><li>PRD・発表資料</li><li>企業との面談</li><li>接客（スターバックス）</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 目標(グレー帯) ===== -->
-<section class="band gray goal" id="goal">
-  <div class="container">
-    <h2 class="display">AI がわかる、<br>人に寄り添う。</h2>
-    <p>将来は、AI がわかる IT コンサルタントとして東京で経験を積み、AI・DX が遅れている地元・岐阜に還元したいと考えています。その途中の目標として、在学中の Kaggle Grandmaster も目指しています。実験を記録し、CV を信じ、1 回に 1 つだけ変える。その積み重ねで上を目指します。</p>
-    <a class="btn" href="https://github.com/kotakota914" target="_blank" rel="noopener">進捗を GitHub で見る</a>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
-  </div>
-</section>
+</main>
 
-<!-- ===== フッター ===== -->
 <footer>
-  <div class="container">
-    <div class="links">
-      <a href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a>
-      <a href="#about">自己紹介</a>
-      <a href="#projects">つくったもの</a>
-      <a href="#competitions">コンペ実績</a>
-    </div>
-    <p>© 2026 K.N. 金沢工業大学 1年。このサイトは単一の HTML ファイルで作られています。</p>
+  <div class="wrap">
+    <span>© 2026 永井 晃太朗</span>
+    <span><a href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a></span>
   </div>
 </footer>
 
 <script>
-  // スクロールしたらナビの背景を少し濃くする(DESIGN.md の Global Navigation Bar の挙動)
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 10);
-  });
+  const chips = document.querySelectorAll('.legend .chip');
+  const stops = document.querySelectorAll('.route .stop');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    const f = chip.dataset.filter;
+    chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+    stops.forEach(s => {
+      const show = f === 'all' || s.classList.contains(f) || s.classList.contains('both');
+      s.classList.toggle('hidden', !show);
+    });
+  }));
+
+  document.documentElement.classList.add('js');
+  const route = document.querySelector('.route');
+  const train = route.querySelector('.train');
+  const allStops = [...route.querySelectorAll('.stop')];
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+  allStops.forEach(st => io.observe(st));
+  function move() {
+    const r = route.getBoundingClientRect();
+    const y = Math.min(Math.max(window.innerHeight * 0.55 - r.top, 0), r.height - 34);
+    train.style.top = y + 'px';
+    allStops.forEach(st => {
+      const t = st.getBoundingClientRect().top - r.top + 24;
+      st.classList.toggle('passed', t <= y + 17);
+    });
+  }
+  window.addEventListener('scroll', () => requestAnimationFrame(move), { passive: true });
+  window.addEventListener('resize', move); move();
 </script>
 </body>
 </html>
