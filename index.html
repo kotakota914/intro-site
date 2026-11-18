@@ -71,7 +71,8 @@
   .feature dt { font-weight: 700; } .feature dd { color: var(--sub); }
   .feature .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
   .btn.soon { border-style: dashed; color: var(--sub); border-color: var(--sub); }
-  .feature-shot { aspect-ratio: 9 / 19; max-height: 460px; justify-self: center; width: 100%; max-width: 230px; border-radius: 36px; border: 8px solid var(--ink); background: var(--hu-soft); display: grid; place-items: center; text-align: center; color: var(--hu); font-weight: 700; font-size: 14px; }
+  .feature-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 28px; }
+  .feature-shot { overflow: hidden; aspect-ratio: 9 / 19; max-height: 460px; justify-self: center; width: 100%; max-width: 230px; border-radius: 36px; border: 8px solid var(--ink); background: var(--hu-soft); display: grid; place-items: center; text-align: center; color: var(--hu); font-weight: 700; font-size: 14px; }
   @media (max-width: 860px) { .feature { grid-template-columns: 1fr; padding: 24px; } .feature dl { grid-template-columns: 1fr; gap: 2px; } .feature dd { margin-bottom: 8px; } }
 
   /* セクション共通 */
@@ -485,7 +486,7 @@
         <p>学生スタッフとして働く中で、シフトの確認と調整に手間がかかっていることに気づき、自分でアプリを作りました。最初は Web アプリとして作り、いまは iOS アプリにして、自分と先輩のスマホで実際の業務に使っています。</p>
         <dl>
           <dt>いまの状況</dt><dd>自分と先輩のスマホにビルドして、実際の業務で使っている</dd>
-          <dt>機能</dt><dd>スタッフ用のシフト確認画面と、シフトを組む人のための管理者画面</dd>
+          <dt>機能</dt><dd>月表示のカレンダー、次の勤務の表示、募集中のシフト、マイシフト、通知、管理者画面</dd>
           <dt>大事にしたこと</dt><dd>使う人の声を聞いて直すこと。スターバックスの接客と同じで、対話から満足をつくる。</dd>
           <dt>次の目標</dt><dd>2026年12月に App Store で公開。1〜2月に1〜4年生で試験運用して改善し、2027年4月からスタッフ約50人で本格運用する。</dd>
         </dl>
@@ -493,7 +494,7 @@
           <span class="btn soon">App Store　公開準備中</span>
         </div>
       </div>
-      <div class="feature-shot" aria-label="アプリの画面（スクリーンショット準備中）"><span>アプリの画面<br>スクリーンショット準備中</span></div>
+      <div class="feature-shot"><img src="assets/photos/shift-app.jpg" alt="シフト管理アプリの月表示画面。カレンダーに勤務日と募集中のシフトが表示されている" loading="lazy"></div>
     </article>
 
     <div class="works">
