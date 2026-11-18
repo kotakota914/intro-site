@@ -198,8 +198,8 @@
   @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
   .big > span { display: inline-block; animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
   .big .b-x { animation-delay: .25s; } .big .b-hu { animation-delay: .4s; }
-  .hero-map path { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.6s .7s cubic-bezier(.6,0,.2,1) forwards; }
-  .hero-map rect, .hero-map text { animation: pop .5s 2.1s both; }
+  .hero-map path:not([stroke-dasharray]) { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.6s .7s cubic-bezier(.6,0,.2,1) forwards; }
+  .hero-map rect, .hero-map text, .hero-map path[stroke-dasharray] { animation: pop .5s 1.9s both; }
   .train { position: absolute; z-index: 3; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 15px; box-shadow: 0 0 0 5px #fff; left: calc(88px + (var(--x-ai) + var(--x-hu)) / 2 - 17px); top: 0; transition: top .15s linear; pointer-events: none; }
   .stop.passed.ai .dot::before { background: var(--ai); }
   .stop.passed.hu .dot::before { background: var(--hu); }
@@ -208,7 +208,8 @@
   .js .stop:not(.seen) .card { opacity: 0; transform: translateX(16px); }
   @media (max-width: 640px) { .train { left: calc(58px + (var(--x-ai) + var(--x-hu)) / 2 - 14px); width: 28px; height: 28px; font-size: 12px; } }
   @media (prefers-reduced-motion: reduce) {
-    .big > span, .hero-map path, .hero-map rect, .hero-map text { animation: none; stroke-dashoffset: 0; }
+    .big > span, .hero-map path, .hero-map rect, .hero-map text { animation: none; }
+    .hero-map path:not([stroke-dasharray]) { stroke-dashoffset: 0; }
     .js .stop:not(.seen) .card { opacity: 1; transform: none; }
     .train { transition: none; }
   }
