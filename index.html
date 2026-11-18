@@ -239,6 +239,19 @@
   .pill { display: inline-block; margin-left: 8px; font-size: 12px; font-weight: 700; color: var(--sub); border: 1.5px solid var(--rule); border-radius: 999px; padding: 0 8px; vertical-align: 2px; }
   @media (max-width: 560px) { .lec { grid-template-columns: 1fr; gap: 2px; } }
 
+
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+  .value { padding: 28px 30px; border: 1.5px solid var(--ink); border-radius: 18px; }
+  .value h3 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 900; line-height: 1.45; }
+  .value:nth-child(1) h3 { color: var(--ai); } .value:nth-child(2) h3 { color: var(--hu); } .value:nth-child(3) h3 { color: var(--ink); }
+  .value:last-child { grid-column: 1 / -1; background: var(--ink); color: #fff; }
+  .value:last-child h3 { color: #fff; font-size: clamp(26px, 3.4vw, 36px); }
+  .value p { margin-top: 12px; color: var(--sub); }
+  .value:last-child p { color: #C9D1DC; max-width: 46em; }
+  #about .facts { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+  @media (max-width: 960px) { .values { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) { #about .facts { grid-template-columns: 1fr; } }
+
   /* 動き */
   @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
   @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -325,37 +338,23 @@
         <div class="ch-age"><span class="ch-num">3</span>歳〜</div>
         <div class="ch-body">
           <h3>父の影響で、野球を始める</h3>
-          <p>中日ドラゴンズの応援団をしていた父の影響で、3歳から野球を始めました。いまも生粋の中日ファンで、毎日試合を見ています。</p>
+          <p>中日ドラゴンズの応援団をしていた父の影響で、3歳から野球を始めました。</p>
         </div>
       </article>
 
       <article class="chapter">
-        <div class="ch-age">小学校</div>
+        <div class="ch-age">小・中学校</div>
         <div class="ch-body">
-          <h3>上級生の試合にも出ていた少年時代</h3>
-          <p>坊主頭で、運動はいつも得意でした。上級生の試合にも出させてもらい、正直、少し天狗になっていた時期もあります。走る練習がきつすぎて倒れ、おんぶされたこともありました。</p>
-          <p>一人で泣いていたとき、母が泣きながら「私はこうちゃんのみかただから」と言ってくれたことを、今でも覚えています。</p>
-          <p>小6の誕生日には、中学の監督がわざわざ小学校まで来てスカウトしてくれました。硬式のクラブチームか中学の軟式野球部かで迷いましたが、同級生にたくさん「ながいがクラブに行くなら俺はやめる」と言われ、この仲間と楽しくやろうと軟式を選びました。</p>
-        </div>
-      </article>
-
-      <article class="chapter">
-        <div class="ch-age">中学校</div>
-        <div class="ch-body">
-          <h3>岐阜県選抜、あと3アウトで全国</h3>
-          <p>勝ち負けでいえば負ける方が多かったけれど、仲間と過ごした最高の3年間でした。中3で岐阜県の中学選抜に選ばれ、あと3アウトで全国大会というところでサヨナラ負け。この悔しさが、高校で甲子園を目指すきっかけになりました。</p>
+          <h3>仲間と野球に打ち込む</h3>
+          <p>中学では仲間と過ごす野球を選び、中3で岐阜県選抜に選ばれました。このときの悔しさが、高校で甲子園を目指すきっかけになりました。</p>
         </div>
       </article>
 
       <article class="chapter">
         <div class="ch-age">高校</div>
         <div class="ch-body">
-          <h3>天国と地獄を経験した、関商工での3年間</h3>
-          <p>甲子園に1回しか出たことのない公立校で、強豪を倒して甲子園に行きたい。そう思って「みんなでその高校に行こう」と声をかけ、県選抜の主力5〜6人で関商工に進みました。</p>
-          <p>部員は3学年で90人以上。A・B・Cチームの境界線がはっきりある中で、すべてのチームを経験しました。Cチームでは雑用をしながらチームの役に立つ方法を考え、Aチームでは支えてくれる仲間に感謝を言葉で伝えることを意識しました。同級生全員と話せる関係をつくれたのは、このころです。</p>
-          <p>1年の冬に体重を5kg増やし、春の大会で背番号5をもらいました。ところが張り切りすぎて大会前にけが。チームに迷惑をかけると思い、自分から申告してメンバーを外れました。</p>
-          <p>そこから約1年、選手としてプレーできない時間が続きます。何かでチームに貢献したいと監督に相談し、データアナリストになりました。朝から晩まで対戦相手の映像を見て分析し、大会前のミーティングで対策を発表。最後は大会期間中の練習メニューを任されるまでになりました。2年のときには、名将・阪口慶三さんが関商工に来られ、たくさん話を聞くことができました。</p>
-          <p>3年の春に復帰してからは、毎朝6時に起きて友達と朝練。最後の夏、初めてベンチ入りをつかみ、県ベスト4まで進みました。負けた瞬間に一番に浮かんだのは、毎日のお弁当や送迎、弟と妹の時間まで使って支えてくれた家族への感謝でした。</p>
+          <h3>選手から、チームを支えるデータアナリストへ</h3>
+          <p>関商工の野球部でレギュラーをつかんだ直後にけがをし、約1年プレーできない時期がありました。そこで監督に相談し、対戦相手を分析するデータアナリストに。最後は大会中の練習メニューを任されるまでになりました。復帰後の最後の夏は、県ベスト4。支えてくれた家族への感謝を強く感じた3年間でした。</p>
           <blockquote>当たり前のことを、どれだけ当たり前にやるかが成功する道。<cite>高校の監督の言葉</cite></blockquote>
         </div>
       </article>
@@ -364,7 +363,7 @@
         <div class="ch-age">大学</div>
         <div class="ch-body">
           <h3>データから結論を出す人になりたくて</h3>
-          <p>高校の監督の紹介で金沢工業大学を知り、オープンスクールで入学を決めました。データ分析の経験から「データで考えて結論を出したい」と思い、これからはAIを使える人が必要になると感じて、知能情報システム学科を選びました。ここから先は、下のロードマップに続きます。</p>
+          <p>データ分析の経験から、これからはAIを使える人が必要になると感じ、金沢工業大学の知能情報システム学科へ。ここから先は、下のロードマップに続きます。</p>
         </div>
       </article>
     </div>
@@ -374,14 +373,13 @@
 <section class="block" id="about">
   <div class="wrap">
     <h2>About</h2>
-    <div class="about-grid">
-      <div>
-        <p><strong>モットーは「とにかく、やりたいことを行動する」。</strong>やってみないとわからないことがあると思い、ハッカソン、インターン、学外の講座に飛び込んでいます。ハッカソンでは一度も同じ人と組んだことがありません。人によって考え方や進め方が違うことを知るのが、自分にとっての価値だからです。</p>
-        <p><strong>強みは、対話から答えをつくること。</strong>0から課題を見つけるより、すでにある課題に解決策を出すのが得意です。スターバックスの接客でも、アプリづくりでも、相手の声を聞いて直すことを一番大事にしています。</p>
-        <p><strong>感謝は、言葉にして伝える。</strong>言葉にしないと気持ちは伝わらない、と高校で学びました。恥ずかしがり屋なので、まだ親にはちゃんと言えていませんが。</p>
-        <p><strong>目指すのは、AI格差のない岐阜。</strong>Gnomatic で地方企業の AI・DX が進んでいない現状を目の当たりにしました。AIを持っていても使いこなせない差は、地方ほど大きい。まずは東京の外資系 IT コンサルでいちばん成長できる環境に飛び込み、いろいろな業界の人と関わって知見を積みます。その後は岐阜で起業し、みんなが安心してAIを使える地域をつくりたいと考えています。</p>
-      </div>
-      <ul class="facts">
+    <div class="values">
+      <article class="value"><h3>とにかく、<br>やりたいことを行動する。</h3><p>これが一番のモットーです。やってみないとわからないことがあると思い、ハッカソン、インターン、学外の講座に飛び込んでいます。ハッカソンでは一度も同じ人と組んだことがありません。人によって考え方や進め方が違うことを知るのが、自分にとっての価値だからです。</p></article>
+      <article class="value"><h3>対話から、<br>答えをつくる。</h3><p>これが自分の強みです。0から課題を見つけるより、すでにある課題に解決策を出すのが得意です。スターバックスの接客でも、アプリづくりでも、相手の声を聞いて直すことを一番大事にしています。</p></article>
+      <article class="value"><h3>感謝は、<br>言葉にして伝える。</h3><p>言葉にしないと気持ちは伝わらない、と高校で学びました。恥ずかしがり屋なので、まだ親にはちゃんと言えていませんが。</p></article>
+      <article class="value"><h3>目指すのは、AI格差のない岐阜。</h3><p>Gnomatic で地方企業の AI・DX が進んでいない現状を目の当たりにしました。AIを持っていても使いこなせない差は、地方ほど大きい。まずは東京の外資系 IT コンサルでいちばん成長できる環境に飛び込み、いろいろな業界の人と関わって知見を積みます。その後は岐阜で起業し、みんなが安心してAIを使える地域をつくりたいと考えています。</p></article>
+    </div>
+    <ul class="facts">
         <li><span>所属</span><span>金沢工業大学 情報理工学部 知能情報システム学科 1年</span></li>
         <li><span>出身</span><span>岐阜県（関商工高校 野球部）</span></li>
         <li><span>野球歴</span><span>3歳〜。中学で岐阜県選抜、高校で県ベスト4</span></li>
@@ -389,7 +387,6 @@
         <li><span>課外活動</span><span>Data Dreamers、Developers Hub、情報セキュリティ・スキルアッププロジェクト、Gnomatic</span></li>
         <li><span>好きなもの</span><span>中日ドラゴンズ、ONE OK ROCK（ライブ5回）</span></li>
       </ul>
-    </div>
   </div>
 </section>
 
