@@ -220,6 +220,24 @@
   .yt-thumb:hover .yt-play { transform: translate(-50%,-50%) scale(1.08); }
   .yt iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 
+
+  /* Honors */
+  .tabs { display: flex; gap: 8px; margin-top: 28px; border-bottom: 1.5px solid var(--rule); }
+  .tabs button { font-family: var(--jp); font-size: 15px; font-weight: 700; padding: 10px 16px; border: 0; background: none; color: var(--sub); border-bottom: 3px solid transparent; margin-bottom: -1.5px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+  .tabpanel { margin-top: 20px; display: grid; gap: 12px; max-width: 820px; }
+  .tabpanel[hidden] { display: none; }
+  .lec { display: grid; grid-template-columns: 7.5em 1fr; gap: 16px; padding: 16px 20px; border: 1.5px solid var(--rule); border-radius: 14px; }
+  .lec time { font-family: var(--num); font-weight: 600; font-size: 17px; color: var(--sub); }
+  .lec h3 { font-size: 16.5px; font-weight: 700; line-height: 1.6; }
+  .lec .who { color: var(--sub); font-size: 14px; }
+  .lec details { margin-top: 6px; }
+  .lec summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--hu); }
+  .lec details p { margin-top: 6px; padding: 10px 14px; background: var(--hu-soft); border-radius: 10px; font-size: 15px; }
+  .lec.plan { border-style: dashed; }
+  .pill { display: inline-block; margin-left: 8px; font-size: 12px; font-weight: 700; color: var(--sub); border: 1.5px solid var(--rule); border-radius: 999px; padding: 0 8px; vertical-align: 2px; }
+  @media (max-width: 560px) { .lec { grid-template-columns: 1fr; gap: 2px; } }
+
   /* 動き */
   @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
   @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -253,6 +271,7 @@
       <li class="opt"><a href="#about">About</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#works">Works</a></li>
+      <li class="opt"><a href="#honors">オナーズ</a></li>
       <li><a href="#memo">Memo</a></li>
       <li class="opt"><a href="#skills">Skills</a></li>
     </ul>
@@ -513,6 +532,28 @@
   </div>
 </section>
 
+<section class="block" id="honors">
+  <div class="wrap">
+    <h2>オナーズプログラム</h2>
+    <p class="intro">金沢工業大学のオナーズプログラムで参加した、授業の外の講座や講演会です。参加して感じたことを、講座ごとに一言で残していきます。</p>
+    <div class="tabs" role="tablist" aria-label="講座の種類">
+      <button role="tab" aria-selected="true" data-tab="special">特別講座・講演会</button>
+      <button role="tab" aria-selected="false" data-tab="career">キャリア開発講座</button>
+    </div>
+    <div class="tabpanel" data-panel="special">
+      <article class="lec"><time>2026.08</time><div><h3>数理リテラシー特別講座「ICTによる関数とグラフ」</h3></div></article>
+      <article class="lec"><time>2026.08</time><div><h3>数理リテラシー特別講座「初等整数論入門」</h3></div></article>
+      <article class="lec plan"><time>2026.11.26</time><div><h3>特別講演会「国際標準化の活用について」<span class="pill">参加予定</span></h3><p class="who">横谷哲也 教授</p></div></article>
+      <article class="lec plan"><time>2026.11.26</time><div><h3>特別講演会「ベイズで考える、試して学ぶ意味のつくり方」<span class="pill">参加予定</span></h3><p class="who">水落隆司 氏（三菱電機 シニアフェロー）</p></div></article>
+    </div>
+    <div class="tabpanel" data-panel="career" hidden>
+      <article class="lec"><time>2026.10.23</time><div><h3>OBOG講演会</h3></div></article>
+      <article class="lec plan"><time>2026.11.20</time><div><h3>OBOG座談会<span class="pill">参加予定</span></h3><p class="who">若手の卒業生15名と対面で話す座談会</p></div></article>
+      <article class="lec plan"><time>2026.12</time><div><h3>技術展覧会／就活ストレス攻略講座／就職活動準備 総点検講座／人生と創作<span class="pill">参加予定</span></h3></div></article>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="memo">
   <div class="wrap">
     <h2>Memo</h2>
@@ -585,6 +626,11 @@
       e.currentTarget.replaceWith(f);
     });
   });
+
+  document.querySelectorAll('.tabs button').forEach(btn => btn.addEventListener('click', () => {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+    document.querySelectorAll('.tabpanel').forEach(p => p.hidden = p.dataset.panel !== btn.dataset.tab);
+  }));
 </script>
 </body>
 </html>
