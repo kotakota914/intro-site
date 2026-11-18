@@ -252,6 +252,13 @@
   @media (max-width: 960px) { .values { grid-template-columns: 1fr; } }
   @media (max-width: 760px) { #about .facts { grid-template-columns: 1fr; } }
 
+
+  .ch-photos { display: flex; gap: 12px; margin-top: 18px; }
+  .ch-photos figure { flex: 1 1 0; max-width: 300px; }
+  .ch-photos img { width: 100%; height: 300px; object-fit: cover; object-position: center 20%; border-radius: 14px; }
+  .ch-photos figcaption { font-size: 13px; color: var(--sub); margin-top: 6px; }
+  @media (max-width: 560px) { .ch-photos img { height: 180px; } }
+
   /* 動き */
   @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
   @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -339,6 +346,7 @@
         <div class="ch-body">
           <h3>父の影響で、野球を始める</h3>
           <p>中日ドラゴンズの応援団をしていた父の影響で、3歳から野球を始めました。</p>
+          <div class="ch-photos"><figure><img src="assets/photos/dragons.jpg" alt="中日ドラゴンズの選手と写る幼いころの写真" loading="lazy"><figcaption>ドラゴンズのファンイベントで</figcaption></figure></div>
         </div>
       </article>
 
@@ -347,6 +355,7 @@
         <div class="ch-body">
           <h3>仲間と野球に打ち込む</h3>
           <p>中学では仲間と過ごす野球を選び、中3で岐阜県選抜に選ばれました。このときの悔しさが、高校で甲子園を目指すきっかけになりました。</p>
+          <div class="ch-photos"><figure><img src="assets/photos/kid-batting.jpg" alt="小学生のころ打席に立つ写真" loading="lazy"><figcaption>小学生のころ</figcaption></figure><figure><img src="assets/photos/allgifu.jpg" alt="岐阜県選抜のユニフォームで送球する写真" loading="lazy"><figcaption>中学 岐阜県選抜</figcaption></figure></div>
         </div>
       </article>
 
@@ -355,6 +364,7 @@
         <div class="ch-body">
           <h3>選手から、チームを支えるデータアナリストへ</h3>
           <p>関商工の野球部でレギュラーをつかんだ直後にけがをし、約1年プレーできない時期がありました。そこで監督に相談し、対戦相手を分析するデータアナリストに。最後は大会中の練習メニューを任されるまでになりました。復帰後の最後の夏は、県ベスト4。支えてくれた家族への感謝を強く感じた3年間でした。</p>
+          <div class="ch-photos"><figure><img src="assets/photos/hs-swing.jpg" alt="高校の試合でスイングする写真" loading="lazy"><figcaption>関商工 野球部</figcaption></figure><figure><img src="assets/photos/hs-atbat.jpg" alt="高校の試合で打席に向かう写真" loading="lazy"><figcaption>最後の夏</figcaption></figure></div>
           <blockquote>当たり前のことを、どれだけ当たり前にやるかが成功する道。<cite>高校の監督の言葉</cite></blockquote>
         </div>
       </article>
