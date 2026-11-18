@@ -207,6 +207,19 @@
   .stop .card h3 img { box-shadow: 0 0 0 1px var(--rule); }
   @media (max-width: 640px) { .stop .card.themed::after { width: 96px; height: 96px; right: -24px; } }
 
+
+  /* YouTube 埋め込み */
+  .yt { margin-top: 16px; border: 1.5px solid var(--rule); border-radius: 12px; overflow: hidden; background: #fff; }
+  .yt-head { padding: 12px 14px; display: grid; gap: 4px; }
+  .yt-head b { font-size: 15px; line-height: 1.4; }
+  .yt-src { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--sub); }
+  .yt-thumb { display: block; position: relative; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; cursor: pointer; background: #000; }
+  .yt-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .9; }
+  .yt-play { position: absolute; left: 50%; top: 50%; width: 64px; height: 44px; transform: translate(-50%,-50%); border-radius: 12px; background: #FF0000; transition: transform .2s; }
+  .yt-play::after { content: ""; position: absolute; left: 26px; top: 13px; border-left: 16px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+  .yt-thumb:hover .yt-play { transform: translate(-50%,-50%) scale(1.08); }
+  .yt iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
   /* 動き */
   @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
   @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -384,7 +397,7 @@
         <li class="stop hu"><div class="when">2026.07</div><div class="dot"></div><div class="card themed" style="--theme:#1E6B4A;--logo:url(assets/logo-starbucks.png)"><h3><img src="assets/logo-starbucks.png" alt=""><span><a class="ext" href="https://www.starbucks.co.jp/" target="_blank" rel="noopener">スターバックス</a>でアルバイト</span></h3><p>お客様一人ひとりが満足して帰れる接客を意識。対話から満足をつくる姿勢は、アプリづくりでも一番大事にしている。</p></div></li>
         <li class="stop both"><div class="when">2026.08</div><div class="dot"></div><div class="card themed" style="--theme:#E07B2A;--logo:url(assets/logo-hackit.png)"><h3><img src="assets/logo-hackit.png" alt="">Hackit2026 に運営と出場の両方で参加</h3><p>初めてのハッカソン。アイデア出しの難しさと、チームで形にする面白さを知った。</p></div></li>
         <li class="stop ai"><div class="when">2026.08</div><div class="dot"></div><div class="card themed" style="--theme:#1F3F8F;--logo:url(assets/logo-kit.png)"><h3><img src="assets/logo-kit.png" alt="">夏期集中講座で AI を集中的に学ぶ</h3><p>AIプログラミング入門、AI応用Ⅱ（自然言語処理）、情報ネットワーク基礎、ビジネス思考法入門。数理リテラシー特別講座も2つ修了。</p></div></li>
-        <li class="stop both big"><div class="when">2026.09</div><div class="dot"></div><div class="card themed" style="--theme:#18202B;--logo:url(assets/logo-tornado.png)"><h3><img src="assets/logo-tornado.png" alt="">Tornado2026 で企業賞</h3><p>6人チームのPMとして、地域の困りごとと大学生をつなぐ「fitt0」を企画。良いものを作るだけでなく、お金になる形にして初めて価値が届くと学んだ。<a class="ext" href="https://www.youtube.com/watch?v=nB_QOWTI4G8" target="_blank" rel="noopener">紹介動画</a></p><span class="award">企業賞</span></div></li>
+        <li class="stop both big"><div class="when">2026.09</div><div class="dot"></div><div class="card themed" style="--theme:#18202B;--logo:url(assets/logo-tornado.png)"><h3><img src="assets/logo-tornado.png" alt="">Tornado2026 で企業賞</h3><p>6人チームのPMとして、地域の困りごとと大学生をつなぐ「Fitt0」を企画。良いものを作るだけでなく、お金になる形にして初めて価値が届くと学んだ。<a class="ext" href="https://www.youtube.com/watch?v=nB_QOWTI4G8" target="_blank" rel="noopener">紹介動画</a></p><span class="award">企業賞</span></div></li>
         <li class="stop hu"><div class="when">2026.09</div><div class="dot"></div><div class="card themed" style="--theme:#1F3F8F;--logo:url(assets/logo-kit.png)"><h3><img src="assets/logo-kit.png" alt="">学長褒賞（学業）</h3><p>教育補助員を含めた学び合いを進め、学力向上に貢献したことで推薦をいただいた。</p><span class="award">学長褒賞</span></div></li>
         <li class="stop ai"><div class="when">2026.09</div><div class="dot"></div><div class="card themed" style="--theme:#5B2C91;--logo:url(assets/logo-bitgrit.png)"><h3><img src="assets/logo-bitgrit.png" alt="">BitGrit のコンペで 223人中 9位</h3><p>上位4%。LightGBM を中心に、特徴量とパラメータの調整を重ねた。</p></div></li>
         <li class="stop both"><div class="when">2026.10</div><div class="dot"></div><div class="card themed" style="--theme:#E3262E;--logo:url(assets/logo-gnomatic.png)"><h3><img src="assets/logo-gnomatic.png" alt="">Gnomatic で石川県の AI・DX 推進</h3><p>学部4年の先輩たちと、企業との面談で課題を聞き、IT で価値を返す活動を始めた。都市ではない地域ほど AI・DX が遅れていると感じた。</p></div></li>
@@ -451,9 +464,16 @@
     <div class="works">
       <article class="work">
         <span class="tag">Tornado2026・企業賞・PM</span>
-        <h3>fitt0</h3>
+        <h3>Fitt0</h3>
         <p>地域住民の小さな困りごとと、助けたい大学生をつなぐマッチングサービス。AI が依頼内容を整理し、活動の実績を言葉にして残す。</p>
-        <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=nB_QOWTI4G8" target="_blank" rel="noopener">紹介動画を見る（YouTube）</a></div>
+        <div class="yt" data-id="nB_QOWTI4G8">
+          <div class="yt-head"><b>Tornado2026 チームD: Fitt0</b><span class="yt-src"><span>LEVI</span>・<svg viewBox="0 0 28 20" width="22" height="16" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>YouTube</span></div>
+          <button class="yt-thumb" type="button" aria-label="紹介動画を再生する">
+            <img src="https://i.ytimg.com/vi/nB_QOWTI4G8/hqdefault.jpg" alt="Fitt0 紹介動画のサムネイル" loading="lazy" onerror="this.style.visibility='hidden'">
+            <span class="yt-play" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="links"><a class="btn" href="https://hackathon-tau-mauve.vercel.app/" target="_blank" rel="noopener">アプリを触ってみる</a></div>
         <details>
           <summary>詳しく読む</summary>
           <dl>
@@ -556,6 +576,15 @@
   }
   window.addEventListener('scroll', () => requestAnimationFrame(move), { passive: true });
   window.addEventListener('resize', move); move();
+
+  document.querySelectorAll('.yt').forEach(box => {
+    box.querySelector('.yt-thumb').addEventListener('click', e => {
+      const f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1';
+      f.title = 'Fitt0 紹介動画'; f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+      e.currentTarget.replaceWith(f);
+    });
+  });
 </script>
 </body>
 </html>
