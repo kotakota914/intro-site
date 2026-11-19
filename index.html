@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>永井 晃太朗 | Portfolio</title>
+<title>永井 晃太朗 | AI × 人間力</title>
 <meta name="description" content="金沢工業大学 知能情報システム学科 1年 永井晃太朗のポートフォリオ。AI と人間力の 2 本の路線で、これまでとこれからを描いています。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kotakota914.github.io/intro-site/">
+<meta property="og:title" content="永井 晃太朗 | AI × 人間力">
+<meta property="og:description" content="金沢工業大学 知能情報システム学科。AIの力と人間力で、AI格差のない岐阜をつくる。これまでとこれからを路線図で紹介しています。">
+<meta property="og:image" content="https://kotakota914.github.io/intro-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -268,6 +280,8 @@
   .stop-photos figcaption { font-size: 12.5px; color: var(--sub); margin-top: 4px; }
   @media (max-width: 640px) { .stop-photos { flex-direction: column; } .stop-photos img { height: 170px; } }
 
+  .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
   /* 動き */
   @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
   @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -304,6 +318,7 @@
       <li class="opt"><a href="#honors">オナーズ</a></li>
       <li><a href="#memo">Memo</a></li>
       <li class="opt"><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -621,10 +636,20 @@
 
 </main>
 
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="intro">お話を聞いてみたい、一緒に何か作りたい。そんなときは気軽に連絡してください。</p>
+    <div class="links contact-links">
+      <a class="btn solid" href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span>© 2026 永井 晃太朗</span>
-    <span><a href="https://github.com/kotakota914" target="_blank" rel="noopener">GitHub</a></span>
+    <span>最終更新：2026年11月</span>
   </div>
 </footer>
 
