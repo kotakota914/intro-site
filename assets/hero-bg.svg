@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <radialGradient id="gb" cx="15%" cy="20%" r="45%"><stop offset="0" stop-color="#111111" stop-opacity=".10"/><stop offset="1" stop-color="#111111" stop-opacity="0"/></radialGradient>
-    <radialGradient id="gg" cx="85%" cy="80%" r="50%"><stop offset="0" stop-color="#111111" stop-opacity=".10"/><stop offset="1" stop-color="#111111" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gb" cx="15%" cy="20%" r="45%"><stop offset="0" stop-color="#2E5BFF" stop-opacity=".10"/><stop offset="1" stop-color="#2E5BFF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gg" cx="85%" cy="80%" r="50%"><stop offset="0" stop-color="#12A06A" stop-opacity=".10"/><stop offset="1" stop-color="#12A06A" stop-opacity="0"/></radialGradient>
     <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#18202B" fill-opacity=".07"/></pattern>
   </defs>
   <rect width="1600" height="900" fill="url(#dots)"/>
@@ -17,18 +17,18 @@
   </g>
   <!-- 遠くの路線（細い線） -->
   <g fill="none" stroke-linecap="round" stroke-width="4">
-    <path d="M-20 300H420c60 0 80 40 140 40H760" stroke="#111111" stroke-opacity=".08"/>
-    <path d="M-20 340H380c60 0 90 30 150 30H700" stroke="#111111" stroke-opacity=".08"/>
-    <path d="M1620 640H1250c-60 0-80-40-140-40H900" stroke="#111111" stroke-opacity=".07"/>
-    <path d="M1620 680H1280c-60 0-90-30-150-30H960" stroke="#111111" stroke-opacity=".07"/>
+    <path d="M-20 300H420c60 0 80 40 140 40H760" stroke="#2E5BFF" stroke-opacity=".08"/>
+    <path d="M-20 340H380c60 0 90 30 150 30H700" stroke="#12A06A" stroke-opacity=".08"/>
+    <path d="M1620 640H1250c-60 0-80-40-140-40H900" stroke="#2E5BFF" stroke-opacity=".07"/>
+    <path d="M1620 680H1280c-60 0-90-30-150-30H960" stroke="#12A06A" stroke-opacity=".07"/>
   </g>
   <g fill="#fff" stroke-width="3">
-    <circle cx="420" cy="300" r="7" stroke="#111111" stroke-opacity=".15"/>
-    <circle cx="380" cy="340" r="7" stroke="#111111" stroke-opacity=".15"/>
-    <circle cx="1250" cy="640" r="7" stroke="#111111" stroke-opacity=".14"/>
-    <circle cx="1280" cy="680" r="7" stroke="#111111" stroke-opacity=".14"/>
+    <circle cx="420" cy="300" r="7" stroke="#2E5BFF" stroke-opacity=".15"/>
+    <circle cx="380" cy="340" r="7" stroke="#12A06A" stroke-opacity=".15"/>
+    <circle cx="1250" cy="640" r="7" stroke="#2E5BFF" stroke-opacity=".14"/>
+    <circle cx="1280" cy="680" r="7" stroke="#12A06A" stroke-opacity=".14"/>
   </g>
   <!-- 飛騨の山なみ -->
   <path d="M0 900V820l90-50 70 30 110-90 80 60 120-110 90 70 70-40 130 100 100-70 140 80 120-120 110 90 90-50 120 80 160-60V900Z" fill="#18202B" fill-opacity=".035"/>
-  <path d="M0 900V850l120-30 100 20 160-60 140 40 180-50 160 50 200-40 180 40 200-30 160 30V900Z" fill="#111111" fill-opacity=".05"/>
+  <path d="M0 900V850l120-30 100 20 160-60 140 40 180-50 160 50 200-40 180 40 200-30 160 30V900Z" fill="#12A06A" fill-opacity=".05"/>
 </svg>
