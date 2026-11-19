@@ -48,12 +48,12 @@
   /* ナビ */
   .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px); border-bottom: 1px solid var(--rule); }
   .nav .wrap { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .nav .me { font-weight: 700; text-decoration: none; letter-spacing: .02em; }
+  .nav .me { font-weight: 700; text-decoration: none; letter-spacing: .02em; white-space: nowrap; flex: none; }
   .nav ul { display: flex; gap: 22px; list-style: none; font-size: 14px; }
   .nav ul a { text-decoration: none; color: var(--sub); }
   .nav ul a:hover { color: var(--ink); }
   .nav ul a.lang { color: var(--ink); font-weight: 700; border: 1.5px solid var(--ink); border-radius: 999px; padding: 2px 10px; }
-  @media (max-width: 720px) { .nav ul { gap: 14px; font-size: 13px; } .nav ul li.opt { display: none; } }
+  @media (max-width: 720px) { .nav ul { gap: 12px; font-size: 13px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; } .nav ul::-webkit-scrollbar { display: none; } .nav ul li.opt { display: none; } .nav .me { font-size: 15px; } .nav .wrap { padding: 0 16px; } }
 
   /* ヒーロー */
   .hero { padding: 56px 0 64px; }
@@ -321,7 +321,7 @@
       <li class="opt"><a href="#honors">Honors</a></li>
       <li><a href="#memo">Memo</a></li>
       <li class="opt"><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li class="opt"><a href="#contact">Contact</a></li>
       <li><a class="lang" href="../" hreflang="ja">日本語</a></li>
     </ul>
   </div>
