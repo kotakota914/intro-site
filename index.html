@@ -17,6 +17,8 @@
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
+<link rel="alternate" hreflang="ja" href="https://kotakota914.github.io/intro-site/">
+<link rel="alternate" hreflang="en" href="https://kotakota914.github.io/intro-site/en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -50,6 +52,7 @@
   .nav ul { display: flex; gap: 22px; list-style: none; font-size: 14px; }
   .nav ul a { text-decoration: none; color: var(--sub); }
   .nav ul a:hover { color: var(--ink); }
+  .nav ul a.lang { color: var(--ink); font-weight: 700; border: 1.5px solid var(--ink); border-radius: 999px; padding: 2px 10px; }
   @media (max-width: 720px) { .nav ul { gap: 14px; font-size: 13px; } .nav ul li.opt { display: none; } }
 
   /* ヒーロー */
@@ -319,6 +322,7 @@
       <li><a href="#memo">Memo</a></li>
       <li class="opt"><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a class="lang" href="en/" hreflang="en">EN</a></li>
     </ul>
   </div>
 </nav>
