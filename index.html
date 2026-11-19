@@ -56,7 +56,8 @@
   @media (max-width: 720px) { .nav ul { gap: 12px; font-size: 13px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; } .nav ul::-webkit-scrollbar { display: none; } .nav ul li.opt { display: none; } .nav .me { font-size: 15px; } .nav .wrap { padding: 0 16px; } }
 
   /* ヒーロー */
-  .hero { padding: 56px 0 64px; }
+  .hero { padding: 56px 0 64px; position: relative; overflow: hidden; background: url(assets/hero-bg.svg) center / cover no-repeat; }
+  .hero > .wrap { position: relative; }
   .who { display: flex; align-items: center; gap: 18px; }
   .who .face { width: 72px; height: 72px; font-size: 18px; margin: 0; }
   .who .name { font-size: 22px; font-weight: 900; line-height: 1.3; }
